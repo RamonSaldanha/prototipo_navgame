@@ -1,0 +1,42 @@
+(SISTEMA DE EXPANSÃO DE TERRITÓRIO)
+- Levará pouco tempo pra conseguir novas expansões para sua aldeia principal
+- A expansão terar que ser integrada com as demais propriedades
+- Resultará na conquista de mais influência e recursos abundantes do local tomado
+
+(MOVIMENTAÇÕES)
+- Você receberá o aviso de movimentações apenas quando ele já estiver nas proximidades da aldeia
+- Será possível colocar olheiros mais distantes da aldeia, assim você receberá o aviso antes.
+- As movimentações de combate terão altos custos de ouro (pago por soldado), água e comida.
+- você precisará criar ou comprar cavalos pra aumentar a velocidade da movimentação
+
+(COMÉRCIO)
+- Cada aldeia terá uma maior quantidade de produção de um recursos predominante no local, e isso
+força os jogadores a procura de comércio om os vizinhos.
+- O envio será feito por comerciantes, mesmo que o jogador não esteja online, quando não houver
+recursos para a troca acontecer, o jogador vai perder pontos de lealdade..
+- Você poderá criar um estande de vendas na sua aldeia, com produtos que você queira vender.
+
+(POPULAÇÃO)
+- Você receberá população de acordo com que construir casas.
+- A população virá aos poucos
+- A população não terá função até que você desengine um trabalho a elas, mas ao dar moradia a população
+você terá que dar-lhes o que beber e comer, caso isso não seja feito, a população irá morrer.
+- Você receberá ouro por dar moradia,comida e bebida a população, o ouro também será obtido em minas.
+
+
+(ATAQUES)
+- Serão poucos, já que o jogo será focado no comércio
+- A viagem custará tempo e o ataque ficará em andamento, isto também custará tempo, assim, os aliados
+poderão ajudar reforçando o ataque.
+
+(ALIANÇAS)
+- Você poderá receber auxilio dos seus aliados para acelerar construção, arrecadar recursos para construir
+e população para construir, o aliado que lhe ajudar, receberá pontos de lealdade.
+
+(PONTOS DE LEALDADE)
+- Os pontos de lealdade lhe permitirá ter benefícios ainda não definidos
+
+(PONTOS DE INFLUÊNCIA)
+- Os pontos de inflUência determinará a aliança campeã do jogo
+
+07121926
