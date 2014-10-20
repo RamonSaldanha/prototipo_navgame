@@ -15,9 +15,9 @@ forma 2 (com while):<br />
 		$recurso = ($linha->producao / 3600) * (time() - $linha->ult_att);
 		$pdo_mysql->update_pdo('aldeia',"armazem = armazem + $recurso","`id` = $linha->id");
 		echo "<b>producao do id {$linha->id}:</b> {$linha->producao} <b>Seu armazem: </b>" . round($linha->armazem)."<br />";
-	endforeach;	
-	
+	endforeach;
+
 	$ult_att = time();
 	$pdo_mysql->update_pdo("aldeia","ult_att = $ult_att");
-	
+
 ?>
