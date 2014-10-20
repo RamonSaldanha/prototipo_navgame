@@ -6,7 +6,7 @@
 		{
 			$terreno = "t" . $terreno;
 			global $pdo_mysql;
-			$pdo_mysql->update_pdo('edificios',"$terreno = $edificio","`aldeia` = '1'");
+			$pdo_mysql->update_pdo('edificios',"$terreno = $edificio","`id` = {$_SESSION['aid']}");
 			header("Location: aldeia.php");
 		}
 	}
