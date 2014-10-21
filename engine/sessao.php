@@ -1,5 +1,4 @@
 <?php
-
 	class sessao
 	{
 		public function __construct()
@@ -16,6 +15,7 @@
 				header("Location: entrar.php");
 			endif;
 		}
+
 
 		public function entrar ($usuario,$senha)
 		{
