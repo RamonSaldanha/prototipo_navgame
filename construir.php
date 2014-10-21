@@ -15,6 +15,6 @@ endif;
 ?>
 <div style="border: 1px #ccc solid;">
 	<div style="border-bottom: 1px #ccc solid;">Conjunto Habitacional</div>
-	<div >Fornece m�o de obra a sua aldeia, com o conjuto, voc� pode aumentar sua popula��o �ciosa</div>
+	<div >Fornece mão de obra a sua aldeia, com o conjuto, você pode aumentar sua população Óciosa</div>
 	<div >Custos: Madeira(500) <a href="?t=<?php echo $terreno; ?>&e=1" >Construir</a></div>
 </div>

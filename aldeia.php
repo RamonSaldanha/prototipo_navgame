@@ -17,7 +17,7 @@
 for($t=1;$t <= 9;$t++)
 {
 	$terreno = "t" . $t;
-	foreach ($pdo_mysql->select_pdo("edificios","`uid` = {$_SESSION['uid']}") as $edificios):
+	foreach ($pdo_mysql->select_pdo("edificios","`aid` = {$_SESSION['aid']}") as $edificios):
 		switch($edificios->$terreno):
 			case 0:
 				echo "<a title='' href='construir.php?t={$t}' ><img src='img/a1.png' style='float: left;margin: 0;padding:0;'  ></a>";
