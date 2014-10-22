@@ -12,3 +12,10 @@ seu banco de dados mysql.
 
 no arquivo na pasta engine chamado pdo_mysql.php, você vai encontrar onde mudar
 as configurações de conexão com o mysql.
+
+Acesso
+-------------
+
+Usuário: Teste
+Senha: 123456
+http://ramonsaldanha.wc.lt/
