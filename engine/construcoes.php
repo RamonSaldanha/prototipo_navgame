@@ -4,8 +4,9 @@
 
 		public function checarPropEdificio($edificio)
 		{
-			global $$edificio;
-			$edificio_prop = $$edificio;
+			global $edificios_data;
+			$edificio_prop = $edificios_data[$edificio];
+			//print_r($edificio_prop);
 			return $edificio_prop;
 		}
 
@@ -13,7 +14,7 @@
 		{
 			$terreno = "t" . $terreno;
 			global $pdo_mysql;
-			$edificio_prop = $this->checarPropEdificio("{$edificio}");
+			$edificio_prop = $this->checarPropEdificio($edificio);
 			$tempo_construcao = time() + $edificio_prop["tempo_construcao"];
 			$pdo_mysql->update_pdo('aldeia',"`armazem` = armazem - {$edificio_prop['custo_madeira']}","`id` = {$_SESSION['aid']}");
 			$pdo_mysql->insert_pdo("`ed_construcao`","(`id`, `aid`, `terreno`, `edificio_tipo`, `tempo_construcao`) VALUES (NULL, '{$_SESSION['aid']}', '{$terreno}', '{$edificio}', '{$tempo_construcao}');");
