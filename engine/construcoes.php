@@ -38,7 +38,7 @@
 			if($time < 10) {
 				$time = "0".$time;
 			}
-		return $hr.":".$min.":".$time;
+			return $hr.":".$min.":".$time;
 		}
 	}
 
