@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Out-2014 às 16:04
+-- Generation Time: 23-Out-2014 às 01:53
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS `aldeia` (
 --
 
 INSERT INTO `aldeia` (`id`, `uid`, `ult_att`, `armazem`, `producao`) VALUES
-(1, 1, 1413986489, '131.11111111111157', 1000),
-(2, 2, 1413984498, '100', 2000);
+(1, 1, 1414020311, '-9675.555555555535', 1000),
+(2, 2, 1414018235, '15642.22222222198', 2000);
 
 -- --------------------------------------------------------
 
@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS `edificios` (
 --
 
 INSERT INTO `edificios` (`id`, `aid`, `t1`, `t2`, `t3`, `t4`, `t5`, `t6`, `t7`, `t8`, `t9`) VALUES
-(1, 1, '0', '0', '0', '0', '0', '0', '0', '0', '0'),
-(2, 2, '0', '0', '0', '0', '0', '0', '0', '0', '0');
+(1, 1, '', '', '', '', '', '', '', '', ''),
+(2, 2, '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `ed_construcao` (
   `terreno` varchar(255) NOT NULL,
   `edificio_tipo` varchar(255) NOT NULL,
   `tempo_construcao` int(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=234 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=256 ;
 
 -- --------------------------------------------------------
 
@@ -618,7 +618,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `ed_construcao`
 --
 ALTER TABLE `ed_construcao`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=234;
+MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=256;
 --
 -- AUTO_INCREMENT for table `mapa`
 --
