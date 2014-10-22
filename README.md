@@ -12,3 +12,7 @@ seu banco de dados mysql.
 
 no arquivo na pasta engine chamado pdo_mysql.php, você vai encontrar onde mudar
 as configurações de conexão com o mysql.
+
+Exemplo
+-------------
+O exemplo não é atualizado a cada commit, então esse exemplo pode ser uma versão ainda antiga. site: http://ramonsaldanha.wc.lt/entrar.php Usuário: Teste Senha: 123456
