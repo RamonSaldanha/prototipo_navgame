@@ -14,7 +14,9 @@ $automatico->terminarConstrucao($_SESSION["aid"]);
 
 foreach($pdo_mysql->select_pdo("ed_construcao","`aid` = {$_SESSION['aid']}") as $edificios_construcao):
 	$edificio_prop = $construcoes->checarPropEdificio("{$edificios_construcao->edificio_tipo}");
-	echo "<br /> <b>edificio em construção:</b> ". $edificio_prop["edificio_nome"]. " ficará pronto às ". date("h.i.s", $edificios_construcao->tempo_construcao);
+	echo "<br /> <b>edificio em construção:</b> ". $edificio_prop["edificio_nome"]. " ficará pronto às ";
+	$tempo_restante = ($edificio_prop["tempo_construcao"]) - time();
+	echo $construcoes->checarTempoRestante($edificios_construcao->tempo_construcao-time());
 endforeach;
 
 ?>
