@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Set-2014 às 14:58
--- Versão do servidor: 5.5.36
--- PHP Version: 5.4.27
+-- Generation Time: 22-Out-2014 às 16:04
+-- Versão do servidor: 5.6.20
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,20 +27,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `aldeia` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
+  `uid` int(255) NOT NULL,
   `ult_att` int(250) NOT NULL,
   `armazem` varchar(250) NOT NULL,
-  `producao` int(100) NOT NULL,
-  PRIMARY KEY (`id`)
+  `producao` int(100) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `aldeia`
 --
 
-INSERT INTO `aldeia` (`id`, `ult_att`, `armazem`, `producao`) VALUES
-(1, 1408367529, '480.80555555556', 50),
-(2, 1408367529, '9356.805555555547', 1000);
+INSERT INTO `aldeia` (`id`, `uid`, `ult_att`, `armazem`, `producao`) VALUES
+(1, 1, 1413986489, '131.11111111111157', 1000),
+(2, 2, 1413984498, '100', 2000);
 
 -- --------------------------------------------------------
 
@@ -49,26 +49,40 @@ INSERT INTO `aldeia` (`id`, `ult_att`, `armazem`, `producao`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `edificios` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `aldeia` int(10) NOT NULL,
-  `t1` int(5) NOT NULL,
-  `t2` int(5) NOT NULL,
-  `t3` int(5) NOT NULL,
-  `t4` int(5) NOT NULL,
-  `t5` int(5) NOT NULL,
-  `t6` int(5) NOT NULL,
-  `t7` int(5) NOT NULL,
-  `t8` int(5) NOT NULL,
-  `t9` int(5) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+`id` int(11) NOT NULL,
+  `aid` int(10) NOT NULL,
+  `t1` varchar(5) NOT NULL,
+  `t2` varchar(5) NOT NULL,
+  `t3` varchar(5) NOT NULL,
+  `t4` varchar(5) NOT NULL,
+  `t5` varchar(5) NOT NULL,
+  `t6` varchar(5) NOT NULL,
+  `t7` varchar(5) NOT NULL,
+  `t8` varchar(5) NOT NULL,
+  `t9` varchar(5) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `edificios`
 --
 
-INSERT INTO `edificios` (`id`, `aldeia`, `t1`, `t2`, `t3`, `t4`, `t5`, `t6`, `t7`, `t8`, `t9`) VALUES
-(1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1);
+INSERT INTO `edificios` (`id`, `aid`, `t1`, `t2`, `t3`, `t4`, `t5`, `t6`, `t7`, `t8`, `t9`) VALUES
+(1, 1, '0', '0', '0', '0', '0', '0', '0', '0', '0'),
+(2, 2, '0', '0', '0', '0', '0', '0', '0', '0', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `ed_construcao`
+--
+
+CREATE TABLE IF NOT EXISTS `ed_construcao` (
+`id` int(255) NOT NULL,
+  `aid` int(255) NOT NULL,
+  `terreno` varchar(255) NOT NULL,
+  `edificio_tipo` varchar(255) NOT NULL,
+  `tempo_construcao` int(255) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=234 ;
 
 -- --------------------------------------------------------
 
@@ -77,12 +91,11 @@ INSERT INTO `edificios` (`id`, `aldeia`, `t1`, `t2`, `t3`, `t4`, `t5`, `t6`, `t7
 --
 
 CREATE TABLE IF NOT EXISTS `mapa` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `x` varchar(5) DEFAULT NULL,
   `y` varchar(5) DEFAULT NULL,
   `tip` varchar(1) DEFAULT NULL,
-  `subtip` varchar(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `subtip` varchar(1) DEFAULT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 MAX_ROWS=1000000000 AUTO_INCREMENT=442 ;
 
 --
@@ -539,20 +552,83 @@ INSERT INTO `mapa` (`id`, `x`, `y`, `tip`, `subtip`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+`id` int(100) NOT NULL,
   `nome` varchar(15) NOT NULL,
   `senha` varchar(20) NOT NULL,
-  `ult_att` int(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `ult_att` int(50) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `senha`, `ult_att`) VALUES
-(1, 'ramon', '123456', 0);
+(1, 'ramon', '123456', 0),
+(2, 'teste', '123456', 0);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `aldeia`
+--
+ALTER TABLE `aldeia`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `edificios`
+--
+ALTER TABLE `edificios`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ed_construcao`
+--
+ALTER TABLE `ed_construcao`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mapa`
+--
+ALTER TABLE `mapa`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `usuario`
+--
+ALTER TABLE `usuario`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `aldeia`
+--
+ALTER TABLE `aldeia`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `edificios`
+--
+ALTER TABLE `edificios`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `ed_construcao`
+--
+ALTER TABLE `ed_construcao`
+MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=234;
+--
+-- AUTO_INCREMENT for table `mapa`
+--
+ALTER TABLE `mapa`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=442;
+--
+-- AUTO_INCREMENT for table `usuario`
+--
+ALTER TABLE `usuario`
+MODIFY `id` int(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
