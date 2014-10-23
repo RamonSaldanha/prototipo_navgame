@@ -2,23 +2,38 @@
 	class construcoes
 	{
 
+		public function checarSeExisteEd($aldeia,$edificio)
+		{
+			global $pdo_mysql;
+			foreach($pdo_mysql->selectColuna("edificios") as $colunas):
+					if($colunas != "aid" && $colunas != "id"):
+						$coluna_valor = $pdo_mysql->select_pdo_where("edificios", "{$colunas} = '{$edificio}' AND aid = '{$aldeia}'");
+						if($coluna_valor != ""):
+							 return "existe";
+						endif;
+					endif;
+			endforeach;
+		}
+
 		public function checarPropEdificio($edificio)
 		{
 			global $edificios_data;
 			$edificio_prop = $edificios_data[$edificio];
-			//print_r($edificio_prop);
 			return $edificio_prop;
 		}
 
-		public function construir ($terreno,$edificio)
+		public function construir ($terreno,$edificio,$aid)
 		{
 			$terreno = "t" . $terreno;
 			global $pdo_mysql;
 			$edificio_prop = $this->checarPropEdificio($edificio);
 			$tempo_construcao = time() + $edificio_prop["tempo_construcao"];
-			$pdo_mysql->update_pdo('aldeia',"`armazem` = armazem - {$edificio_prop['custo_madeira']}","`id` = {$_SESSION['aid']}");
-			$pdo_mysql->insert_pdo("`ed_construcao`","(`id`, `aid`, `terreno`, `edificio_tipo`, `tempo_construcao`) VALUES (NULL, '{$_SESSION['aid']}', '{$terreno}', '{$edificio}', '{$tempo_construcao}');");
-			header("Location: aldeia.php");
+			global $construcoes;
+			if($construcoes->checarSeExisteEd($_SESSION['aid'],$_GET['e']) != "existe"):
+				$pdo_mysql->update_pdo('aldeia',"`armazem` = armazem - {$edificio_prop['custo_madeira']}","`id` = {$aid}");
+				$pdo_mysql->insert_pdo("`ed_construcao`","(`id`, `aid`, `terreno`, `edificio_tipo`, `tempo_construcao`) VALUES (NULL, '{$_SESSION['aid']}', '{$terreno}', '{$edificio}', '{$tempo_construcao}');");
+			endif;
+			//header("Location: aldeia.php");
 		}
 
 		public function checarTempoRestante($time) {

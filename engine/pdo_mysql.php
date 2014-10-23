@@ -57,6 +57,11 @@
 				$pdo->execute();
 		}
 
+		public function selectColuna($tabela)
+		{
+			$select = $this->db->query("DESCRIBE `$tabela`");
+			return $select->fetchAll(PDO::FETCH_COLUMN);
+		}
 	}
 
 ?>
