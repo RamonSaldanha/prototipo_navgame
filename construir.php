@@ -8,6 +8,7 @@ $construcoes = new construcoes();
 if(isset($_GET['e']) && $_GET['e'] >= '0'):
 	$construcoes->construir($_GET['t'],$_GET['e'],$_SESSION['aid']);
 endif;
+
 foreach($edificios_data as $edificio):
 		echo "<div style=\"border: 1px #ccc solid;\">";
 		echo "<div style=\"border-bottom: 1px #ccc solid;\">{$edificio["edificio_nome"]}</div>";

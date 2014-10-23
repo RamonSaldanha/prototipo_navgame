@@ -1,11 +1,11 @@
-<link rel="stylesheet" type="text/css" href="layout.style.css">
-<a href="mapa.php">mapa</a> | <a href="aldeia.php">aldeia</a> | <a href="sair.php">sair</a>
-<div style="width: 420px; background-color: #b5e61d; height: 420px;">
 <?php
 include("engine/autoload.php");
 $pdo_mysql = new pdo_mysql();
 $sessao = new sessao();
-
+?>
+<link rel="stylesheet" type="text/css" href="layout.style.css">
+<div style="width: 420px; background-color: #b5e61d; height: 420px;">
+<?php
 if(!empty($_GET['x1'])):
 	$x1 = 0 + $_GET['x1'];
 else:

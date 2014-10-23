@@ -33,7 +33,7 @@
 				$pdo_mysql->update_pdo('aldeia',"`armazem` = armazem - {$edificio_prop['custo_madeira']}","`id` = {$aid}");
 				$pdo_mysql->insert_pdo("`ed_construcao`","(`id`, `aid`, `terreno`, `edificio_tipo`, `tempo_construcao`) VALUES (NULL, '{$_SESSION['aid']}', '{$terreno}', '{$edificio}', '{$tempo_construcao}');");
 			endif;
-			//header("Location: aldeia.php");
+			header("Location: aldeia.php");
 		}
 
 		public function checarTempoRestante($time) {
