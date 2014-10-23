@@ -15,6 +15,30 @@ $edificios_data = array(
 		"custo_madeira" => "1200",
 		"tempo_construcao" => "40",
 		"atributo" => "1"
+	),
+		array(
+		"id" => "2",
+		"edificio_nome" => "Madereira",
+		"edificio_descricao" => "Área com abundância de árvores, local perfeito para explorar a madeira.",
+		"custo_madeira" => "200",
+		"tempo_construcao" => "15",
+		"atributo" => "1"
+	),
+		array(
+		"id" => "3",
+		"edificio_nome" => "Fazenda",
+		"edificio_descricao" => "Produção de comida é necessária para manter sua população alimentada",
+		"custo_madeira" => "500",
+		"tempo_construcao" => "25",
+		"atributo" => "1"
+	),
+		array(
+		"id" => "4",
+		"edificio_nome" => "Quartel",
+		"edificio_descricao" => "Aqui você pode treinar sua população e transforma-la em bravos guerreiros, lembrando que militares não pagam impostos",
+		"custo_madeira" => "1200",
+		"tempo_construcao" => "40",
+		"atributo" => "1"
 	)
 );
 
