@@ -1,6 +1,8 @@
 <?php
 // area de inclusao de propriedades importantes
 include_once("data/edificios_data.php");
+header('Content-Type: text/html; charset=utf-8');
+date_default_timezone_set("Brazil/East");
 
 		function __autoload($classe)
 		{

@@ -1,6 +1,4 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
-
 require("engine/autoload.php");
 $sessao = new sessao();
 $pdo_mysql = new pdo_mysql();

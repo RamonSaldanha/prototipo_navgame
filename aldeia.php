@@ -1,7 +1,5 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <a href="mapa.php">mapa</a> | <a href="aldeia.php">aldeia</a> | <a href="sair.php">sair</a> <br />
 <?php
-date_default_timezone_set("Brazil/East");
 require("engine/autoload.php");
 $sessao = new sessao();
 $pdo_mysql = new pdo_mysql();
