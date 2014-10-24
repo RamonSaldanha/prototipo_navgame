@@ -11,6 +11,10 @@
 						if($coluna_valor != ""):
 							 return "existe";
 						endif;
+						$checar_construindo = $pdo_mysql->select_pdo_where("ed_construcao", "edificio_tipo = '{$edificio}' AND aid = '{$aldeia}'");
+						if($checar_construindo != ""):
+							return "existe_construindo";
+						endif;
 					endif;
 			endforeach;
 		}
@@ -29,7 +33,7 @@
 			$edificio_prop = $this->checarPropEdificio($edificio);
 			$tempo_construcao = time() + $edificio_prop["tempo_construcao"];
 			global $construcoes;
-			if($construcoes->checarSeExisteEd($_SESSION['aid'],$_GET['e']) != "existe"):
+			if($construcoes->checarSeExisteEd($_SESSION['aid'],$_GET['e']) != "existe" || $construcoes->checarSeExisteEd($_SESSION['aid'],$_GET['e']) == "existe_construindo"):
 				$pdo_mysql->update_pdo('aldeia',"`armazem` = armazem - {$edificio_prop['custo_madeira']}","`id` = {$aid}");
 				$pdo_mysql->insert_pdo("`ed_construcao`","(`id`, `aid`, `terreno`, `edificio_tipo`, `tempo_construcao`) VALUES (NULL, '{$_SESSION['aid']}', '{$terreno}', '{$edificio}', '{$tempo_construcao}');");
 			endif;
