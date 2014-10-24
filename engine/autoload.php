@@ -2,6 +2,7 @@
 // area de inclusao de propriedades importantes
 include_once("data/edificios_data.php");
 include_once("modelos/menu.tpl");
+
 include_once("engine/configuracoes.php");
 header('Content-Type: text/html; charset=utf-8');
 date_default_timezone_set("Brazil/East");

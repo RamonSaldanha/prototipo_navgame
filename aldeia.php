@@ -3,11 +3,13 @@ require("engine/autoload.php");
 $sessao = new sessao();
 $pdo_mysql = new pdo_mysql();
 $construcoes = new construcoes();
+$aldeia = new aldeia();
 // FUNÇÕES QUE PRECISAM SER EXECUTADOS SEMPRE QUE VOCÊ ATUALIZAR A PÁGINA
 $automatico = new automatico();
-$automatico->recursosAtt($_SESSION["uid"]);
+$aldeia->recursosAtt($_SESSION["aid"]);
 $automatico->ultima_checagemAtt($_SESSION["uid"]);
 $automatico->terminarConstrucao($_SESSION["aid"]);
+
 
 
 // CONSTRUÇÕES EM ANDAMENTO
@@ -17,7 +19,7 @@ foreach($pdo_mysql->select_pdo("ed_construcao","`aid` = {$_SESSION['aid']}") as 
 	$tempo_restante = ($edificio_prop["tempo_construcao"]) - time();
 	echo $construcoes->checarTempoRestante($edificios_construcao->tempo_construcao-time());
 endforeach;
-
+print_r($aldeia->calcularProd({$_SESSION["aid"]});
 ?>
 <div style="width: 255px;">
 <?php
