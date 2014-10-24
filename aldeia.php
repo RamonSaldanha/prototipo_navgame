@@ -10,8 +10,7 @@ $aldeia->recursosAtt($_SESSION["aid"]);
 $automatico->ultima_checagemAtt($_SESSION["uid"]);
 $automatico->terminarConstrucao($_SESSION["aid"]);
 
-
-
+include_once("modelos/menu_recursos.tpl");
 // CONSTRUÇÕES EM ANDAMENTO
 foreach($pdo_mysql->select_pdo("ed_construcao","`aid` = {$_SESSION['aid']}") as $edificios_construcao):
 	$edificio_prop = $construcoes->checarPropEdificio("{$edificios_construcao->edificio_tipo}");
@@ -19,7 +18,6 @@ foreach($pdo_mysql->select_pdo("ed_construcao","`aid` = {$_SESSION['aid']}") as 
 	$tempo_restante = ($edificio_prop["tempo_construcao"]) - time();
 	echo $construcoes->checarTempoRestante($edificios_construcao->tempo_construcao-time());
 endforeach;
-print_r($aldeia->calcularProd({$_SESSION["aid"]});
 ?>
 <div style="width: 255px;">
 <?php
