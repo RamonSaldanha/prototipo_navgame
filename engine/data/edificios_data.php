@@ -5,7 +5,7 @@ $edificios_data = array(
 		"edificio_nome" => "Conjunto Habitacional 2",
 		"edificio_descricao" => "Casas vão fazer você ter espaço disponível pra receber população óciosa, pronta para o trabalho.",
 		"custo_madeira" => "1000",
-		"tempo_construcao" => "10",
+		"tempo_construcao" => "90",
 		"atributo" => "5000"
 	),
 	array(

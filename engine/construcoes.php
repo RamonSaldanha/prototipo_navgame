@@ -2,25 +2,43 @@
 	class construcoes
 	{
 
-		public function checarSeExisteEd($aldeia,$edificio)
+		public function checarSeExisteEd($aldeia,$edificio,$terreno)
 		{
 			global $pdo_mysql;
+			// o foreach exibe todas as colunas, por exemplo t1,t2,t3,t4,t5 e dai ele verifica se existe a construção
+			// em alguma das colunas, ele verifica todas as colunas excheto a "aid" e "id", isso é se existir alguma coisa,
+			// alguma coluna, ele retorna um erro!
 			foreach($pdo_mysql->selectColuna("edificios") as $colunas):
 					if($colunas != "aid" && $colunas != "id"):
 						$coluna_valor = $pdo_mysql->select_pdo_where("edificios", "{$colunas} = '{$edificio}' AND aid = '{$aldeia}'");
 						if($coluna_valor != ""):
 							 return "existe";
 						endif;
-						$checar_construindo = $pdo_mysql->select_pdo_where("ed_construcao", "edificio_tipo = '{$edificio}' AND aid = '{$aldeia}'");
-						if($checar_construindo != ""):
-							return "existe_construindo";
-						endif;
 					endif;
 			endforeach;
+			// já fora do foreach, ele pesquisa se existe alguma construção em andamento com esse edificio, assim ele não verifica
+			// tantas vezes, e economiza banda, pois se outro select estiver dentro do foreach, vai consumir mais o desempenho;
+			$checar_construindo = $pdo_mysql->select_pdo_where("ed_construcao", "edificio_tipo = '{$edificio}' AND aid = '{$aldeia}'");
+			if($checar_construindo != ""):
+			//	return "existe_construindo";
+			endif;
+			// essa consulta sql a  seguir, ele vai verificar se já existe algum edificio construindo no terreno caso exista, retornará um erro
+			$checar_terreno_c = $pdo_mysql->select_pdo_where("ed_construcao", "terreno = '{$terreno}' AND aid = '{$aldeia}'");
+			if($checar_terreno_c != ""):
+				return "existe_terreno_construindo";
+			endif;
+
+			$checar_terreno = $pdo_mysql->select_pdo_where("edificios", "{$terreno} = '' AND aid = '{$aldeia}'");
+			if($checar_terreno == ""):
+				return "existe_terreno";
+			endif;
+
 		}
 
 		public function checarPropEdificio($edificio)
 		{
+			// essa função é muito importante, pois exibe as propriedades de um determinado edifício, que você escolher
+			// e transforma as propriedades em uma array que é a $edificio_prop;
 			global $edificios_data;
 			$edificio_prop = $edificios_data[$edificio];
 			return $edificio_prop;
@@ -28,20 +46,28 @@
 
 		public function construir ($terreno,$edificio,$aid)
 		{
+			// o get vai passar o id do terreno, e aqui vai concatenar o t, pra transformar no nome da tabela. exemplo: t1,t2..
 			$terreno = "t" . $terreno;
+
 			global $pdo_mysql;
+			// recuperar as propriedades, as caracteristicas da construção é feito através da seguinte função: checarPropEdificios
+			// desta forma, você pode saber o tempo que demora para construir, e os atributos da construção
 			$edificio_prop = $this->checarPropEdificio($edificio);
 			$tempo_construcao = time() + $edificio_prop["tempo_construcao"];
 			global $construcoes;
-			if($construcoes->checarSeExisteEd($_SESSION['aid'],$_GET['e']) != "existe" && $construcoes->checarSeExisteEd($_SESSION['aid'],$_GET['e']) != "existe_construindo"):
+			// essa condição verificará se existe a construção em algum terreno, ou se o terreno já está sendo usado...
+			if($construcoes->checarSeExisteEd($_SESSION['aid'],$_GET['e'],$terreno) == ""):
 				$pdo_mysql->update_pdo('aldeia',"`armazem` = armazem - {$edificio_prop['custo_madeira']}","`id` = {$aid}");
 				$pdo_mysql->insert_pdo("`ed_construcao`","(`id`, `aid`, `terreno`, `edificio_tipo`, `tempo_construcao`) VALUES (NULL, '{$_SESSION['aid']}', '{$terreno}', '{$edificio}', '{$tempo_construcao}');");
 			endif;
-			// header("Location: aldeia.php");
+
+			header("Location: aldeia.php");
 		}
 
 		public function checarTempoRestante($time)
 		{
+			// 	esta função foi importade de outro projeto no github Travianz, pra substituir a hora
+			// 	assim, mostrará quanto tempo falta pra construir ou fazer determinada ação.
 			$min = 0;
 			$hr = 0;
 			$days = 0;

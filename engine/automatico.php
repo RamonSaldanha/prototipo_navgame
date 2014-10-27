@@ -19,7 +19,7 @@
 				global $construcoes;
 
 					if($edificios_construcao->tempo_construcao < time()):
-						if($construcoes->checarSeExisteEd($_SESSION['aid'],$edificios_construcao->edificio_tipo) != "existe"):
+						if($construcoes->checarSeExisteEd($_SESSION['aid'],$edificios_construcao->edificio_tipo,$edificios_construcao->terreno) == ""):
 							$pdo_mysql->update_pdo('edificios',"`{$edificios_construcao->terreno}` = \"{$edificios_construcao->edificio_tipo}\"","`aid` = {$aldeia_id}");
 						endif;
 						$pdo_mysql->delete_pdo('ed_construcao',"`id` = {$edificios_construcao->id}");
