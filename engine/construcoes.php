@@ -2,7 +2,7 @@
 	class construcoes
 	{
 
-		public function checarSeExisteEd($aldeia,$edificio,$terreno)
+		public function checarSeExisteEd($aldeia,$edificio,$terreno=null)
 		{
 			global $pdo_mysql;
 			// o foreach exibe todas as colunas, por exemplo t1,t2,t3,t4,t5 e dai ele verifica se existe a construção
@@ -22,15 +22,17 @@
 			if($checar_construindo != ""):
 			//	return "existe_construindo";
 			endif;
-			// essa consulta sql a  seguir, ele vai verificar se já existe algum edificio construindo no terreno caso exista, retornará um erro
-			$checar_terreno_c = $pdo_mysql->select_pdo_where("ed_construcao", "terreno = '{$terreno}' AND aid = '{$aldeia}'");
-			if($checar_terreno_c != ""):
-				return "existe_terreno_construindo";
-			endif;
+			if(isset($terreno)):
+				// essa consulta sql a  seguir, ele vai verificar se já existe algum edificio construindo no terreno caso exista, retornará um erro
+				$checar_terreno_c = $pdo_mysql->select_pdo_where("ed_construcao", "terreno = '{$terreno}' AND aid = '{$aldeia}'");
+				if($checar_terreno_c != ""):
+					return "existe_terreno_construindo";
+				endif;
 
-			$checar_terreno = $pdo_mysql->select_pdo_where("edificios", "{$terreno} = '' AND aid = '{$aldeia}'");
-			if($checar_terreno == ""):
-				return "existe_terreno";
+				$checar_terreno = $pdo_mysql->select_pdo_where("edificios", "{$terreno} = '' AND aid = '{$aldeia}'");
+				if($checar_terreno == ""):
+					return "existe_terreno";
+				endif;
 			endif;
 
 		}

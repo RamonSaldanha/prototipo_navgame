@@ -22,7 +22,7 @@ $edificios_data = array(
 		"edificio_descricao" => "Área com abundância de árvores, local perfeito para explorar a madeira.",
 		"custo_madeira" => "200",
 		"tempo_construcao" => "15",
-		"atributo" => "1"
+		"atributo" => "400"
 	),
 		array(
 		"id" => "3",

@@ -4,19 +4,14 @@ $recursos_data = array(
 		"id" => "0",
 		"recurso_nome" => "madeira",
 		"producao" => "%produz%",
-		"estoque" => "200"
+		"estoque" => "%estocado%"
 	),
 	array(
 		"id" => "1",
 		"recurso_nome" => "comida",
 		"producao" => "%produz%",
-		"estoque" => "100"
+		"estoque" => "%estocado%"
 	)
 );
-
-// foreach($recursos_data as $recurso):
-// 	preg_replace("/%produz%/", '500', $recursos_data[$recurso['id']]));
-// endforeach;
-
 
 ?>
