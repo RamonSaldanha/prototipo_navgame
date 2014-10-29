@@ -2,6 +2,17 @@
 
 	class aldeia
 	{
+		
+		public function checarArmazem($aid)
+		{
+			global $construcoes;
+			$armazem = ARMAZEM_MINIMO;
+			if($construcoes->checarSeExisteEd($aid,1) == "existe"):
+				$armazem += $construcoes->checarPropEdificio(1)['atributo'];
+			endif;
+
+			return $armazem;
+		}
 
 		public function calcularProdEstoque($aid)
 		{
@@ -51,7 +62,7 @@
 			$madeira = PROD_MINIMA;
 			// '2' é o id da construção da madereira, ele vai verificar se existe uma madereira, e vai adicionar
 			// o bonus na producao, de acordo com a propriedade do edificio...
-			if($construcoes->checarSeExisteEd($aid,2) != ""):
+			if($construcoes->checarSeExisteEd($aid,2) == "existe"):
 				$madeira += $construcoes->checarPropEdificio(2)['atributo'];
 			endif;
 
@@ -62,7 +73,7 @@
 		{
 			global $construcoes;
 			$comida = PROD_MINIMA;
-			if($construcoes->checarSeExisteEd($aid,3) != ""):
+			if($construcoes->checarSeExisteEd($aid,3) == "existe"):
 				$comida += $construcoes->checarPropEdificio(3)['atributo'];
 			endif;
 			return $comida;
@@ -75,11 +86,11 @@
 			foreach($this->calcularProdEstoque($aid) as $recursos):
 				$aldeia = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
 				$recurso_calcular = ($recursos["producao"] / 3600) * (time() - $aldeia["ult_att"]);
-				if($aldeia["madeira"] <= ARMAZEM_MINIMO):
+
+				if($aldeia["madeira"] + $aldeia["comida"] <= $this->checarArmazem($aid)):
 					$pdo_mysql->update_pdo('aldeia',"{$recursos["recurso_nome"]} = {$recursos["recurso_nome"]} + $recurso_calcular","`id` = {$aid}");
 				endif;
 			endforeach;
-
 			// echo "<b>sua producao por hora:</b> {$this->calcularProd($_SESSION["aid"])[1]} <b>Seu armazem: </b>" . round($aldeia["armazem"]) ;
 		}
 	}

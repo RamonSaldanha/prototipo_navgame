@@ -14,7 +14,7 @@ $edificios_data = array(
 		"edificio_descricao" => "Espaço reservado para armazenar seus recursos em sua aldeia.",
 		"custo_madeira" => "1200",
 		"tempo_construcao" => "40",
-		"atributo" => "1"
+		"atributo" => "1000"
 	),
 		array(
 		"id" => "2",
@@ -30,7 +30,7 @@ $edificios_data = array(
 		"edificio_descricao" => "Produção de comida é necessária para manter sua população alimentada",
 		"custo_madeira" => "500",
 		"tempo_construcao" => "25",
-		"atributo" => "1"
+		"atributo" => "400"
 	),
 		array(
 		"id" => "4",

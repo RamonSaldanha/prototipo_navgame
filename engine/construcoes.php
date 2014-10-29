@@ -1,7 +1,10 @@
 <?php
 	class construcoes
 	{
+		public function checarRecursos()
+		{
 
+		}
 		public function checarSeExisteEd($aldeia,$edificio,$terreno=null)
 		{
 			global $pdo_mysql;
