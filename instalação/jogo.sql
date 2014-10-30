@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Out-2014 às 15:10
+-- Generation Time: 30-Out-2014 às 16:10
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -40,10 +40,10 @@ CREATE TABLE IF NOT EXISTS `aldeia` (
 --
 
 INSERT INTO `aldeia` (`id`, `uid`, `aldeia_nome`, `ult_att`, `madeira`, `comida`) VALUES
-(1, 1, 'Trestles', 1414678112, '377.4777777777757', '946.3666666666644'),
-(2, 2, 'Pipeline', 1414676814, '198.6111111111113', '199.71111111111128'),
-(3, 1, 'Peniche', 1414678112, '0', '0'),
-(4, 2, 'Mentaway', 1414676814, '', '');
+(1, 1, 'Trestles', 1414679876, '377.4777777777757', '946.3666666666644'),
+(2, 2, 'Pipeline', 1414681818, '656.6999999999985', '659.0222222222205'),
+(3, 1, 'Peniche', 1414679876, '2.6999999999999966', '2.7444444444444396'),
+(4, 2, 'Mentaway', 1414681818, '2.833333333333304', '2.866666666666637');
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `edificios` (
   `t7` varchar(5) NOT NULL,
   `t8` varchar(5) NOT NULL,
   `t9` varchar(5) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `edificios`
@@ -71,7 +71,9 @@ CREATE TABLE IF NOT EXISTS `edificios` (
 
 INSERT INTO `edificios` (`id`, `aid`, `t1`, `t2`, `t3`, `t4`, `t5`, `t6`, `t7`, `t8`, `t9`) VALUES
 (1, 1, '3', '', '1', '', '', '0', '2', '', ''),
-(2, 2, '2', '', '3', '', '', '', '', '', '1');
+(2, 2, '2', '', '3', '', '', '', '', '', '1'),
+(3, 3, '', '', '', '', '', '', '', '', ''),
+(4, 4, '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -616,7 +618,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `edificios`
 --
 ALTER TABLE `edificios`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `ed_construcao`
 --

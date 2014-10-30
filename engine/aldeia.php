@@ -2,15 +2,23 @@
 
 	class aldeia
 	{
-		public function multiAldeias($uid)
+		public function multiAldeias($uid=null,$mudar_aldeia=null)
 		{
 			global $pdo_mysql;
-			$multi_aldeias = $pdo_mysql->select_pdo("aldeia","`uid` = {$uid}");
-			$aldeias_array = array();
-			foreach($multi_aldeias as $aldeias):
-				$aldeias_array[] = $aldeias;
-			endforeach;
-			return $aldeias_array;
+
+			if(isset($mudar_aldeia)):
+				$_SESSION['aid'] = $mudar_aldeia;
+				header("Location: aldeia.php");
+			endif;
+
+			if(isset($uid)):
+				$multi_aldeias = $pdo_mysql->select_pdo("aldeia","`uid` = {$uid}");
+				$aldeias_array = array();
+				foreach($multi_aldeias as $aldeias):
+					$aldeias_array[] = $aldeias;
+				endforeach;
+				return $aldeias_array;
+			endif;
 		}
 
 		public function checarArmazem($aid)
