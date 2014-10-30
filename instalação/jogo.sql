@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Out-2014 às 17:11
+-- Generation Time: 30-Out-2014 às 15:10
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -29,21 +29,21 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `aldeia` (
 `id` int(11) NOT NULL,
   `uid` int(255) NOT NULL,
+  `aldeia_nome` varchar(255) NOT NULL,
   `ult_att` int(250) NOT NULL,
-  `armazem` varchar(250) NOT NULL,
-  `producao` int(100) NOT NULL,
   `madeira` varchar(255) NOT NULL,
   `comida` varchar(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `aldeia`
 --
 
-INSERT INTO `aldeia` (`id`, `uid`, `ult_att`, `armazem`, `producao`, `madeira`, `comida`) VALUES
-(1, 1, 1414163419, '0', 1000, '2237.6666666666665', '639.3333333333334'),
-(2, 2, 1414163409, '-244.9999999999983', 2000, '2347.6944444444407', '696.22222222222'),
-(3, 1, 1414163419, '', 10, '0', '0');
+INSERT INTO `aldeia` (`id`, `uid`, `aldeia_nome`, `ult_att`, `madeira`, `comida`) VALUES
+(1, 1, 'Trestles', 1414678112, '377.4777777777757', '946.3666666666644'),
+(2, 2, 'Pipeline', 1414676814, '198.6111111111113', '199.71111111111128'),
+(3, 1, 'Peniche', 1414678112, '0', '0'),
+(4, 2, 'Mentaway', 1414676814, '', '');
 
 -- --------------------------------------------------------
 
@@ -70,8 +70,8 @@ CREATE TABLE IF NOT EXISTS `edificios` (
 --
 
 INSERT INTO `edificios` (`id`, `aid`, `t1`, `t2`, `t3`, `t4`, `t5`, `t6`, `t7`, `t8`, `t9`) VALUES
-(1, 1, '', '', '', '', '', '', '', '', ''),
-(2, 2, '', '', '', '', '', '', '', '', '');
+(1, 1, '3', '', '1', '', '', '0', '2', '', ''),
+(2, 2, '2', '', '3', '', '', '', '', '', '1');
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `ed_construcao` (
   `terreno` varchar(255) NOT NULL,
   `edificio_tipo` varchar(255) NOT NULL,
   `tempo_construcao` int(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=73 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -611,7 +611,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `aldeia`
 --
 ALTER TABLE `aldeia`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `edificios`
 --
@@ -621,7 +621,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `ed_construcao`
 --
 ALTER TABLE `ed_construcao`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
+MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `mapa`
 --
