@@ -1,10 +1,19 @@
 <?php
 	class construcoes
 	{
-		public function checarRecursos()
+		public function checarRecursos($aid,$edificio)
 		{
+			global $aldeia;
 
+			foreach($aldeia->calcularProdEstoque($aid) as $seu_estoque):
+				if($this->checarPropEdificio($edificio)["custo_{$seu_estoque["recurso_nome"]}"] <= $seu_estoque['estoque']):
+
+				else:
+					return "sem_recursos";
+				endif;
+			endforeach;
 		}
+
 		public function checarSeExisteEd($aldeia,$edificio,$terreno=null)
 		{
 			global $pdo_mysql;
@@ -61,11 +70,12 @@
 			$tempo_construcao = time() + $edificio_prop["tempo_construcao"];
 			global $construcoes;
 			// essa condição verificará se existe a construção em algum terreno, ou se o terreno já está sendo usado...
-			if($construcoes->checarSeExisteEd($_SESSION['aid'],$_GET['e'],$terreno) == ""):
-				$pdo_mysql->update_pdo('aldeia',"`madeira` = madeira - {$edificio_prop['custo_madeira']}","`id` = {$aid}");
-				$pdo_mysql->insert_pdo("`ed_construcao`","(`id`, `aid`, `terreno`, `edificio_tipo`, `tempo_construcao`) VALUES (NULL, '{$_SESSION['aid']}', '{$terreno}', '{$edificio}', '{$tempo_construcao}');");
+			if($this->checarRecursos($_SESSION['aid'],$edificio["id"]) != "sem_recursos"):
+				if($construcoes->checarSeExisteEd($_SESSION['aid'],$_GET['e'],$terreno) == ""):
+					$pdo_mysql->update_pdo('aldeia',"`madeira` = madeira - {$edificio_prop['custo_madeira']}","`id` = {$aid}");
+					$pdo_mysql->insert_pdo("`ed_construcao`","(`id`, `aid`, `terreno`, `edificio_tipo`, `tempo_construcao`) VALUES (NULL, '{$_SESSION['aid']}', '{$terreno}', '{$edificio}', '{$tempo_construcao}');");
+				endif;
 			endif;
-
 			header("Location: aldeia.php");
 		}
 

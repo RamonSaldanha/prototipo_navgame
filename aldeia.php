@@ -1,15 +1,14 @@
 <?php
 require("engine/autoload.php");
-$sessao = new sessao();
 $pdo_mysql = new pdo_mysql();
+$sessao = new sessao();
 $construcoes = new construcoes();
 $aldeia = new aldeia();
 // FUNÇÕES QUE PRECISAM SER EXECUTADOS SEMPRE QUE VOCÊ ATUALIZAR A PÁGINA
-$automatico = new automatico();
 $aldeia->recursosAtt($_SESSION["aid"]);
+$automatico = new automatico();
 $automatico->ultima_checagemAtt($_SESSION["uid"]);
 $automatico->terminarConstrucao($_SESSION["aid"]);
-
 include_once("modelos/menu_recursos.tpl");
 // CONSTRUÇÕES EM ANDAMENTO
 foreach($pdo_mysql->select_pdo("ed_construcao","`aid` = {$_SESSION['aid']}") as $edificios_construcao):
@@ -29,5 +28,6 @@ for($t=1;$t <= 9;$t++)
 		echo "<a title='' href='construir.php?t={$t}' ><img src='img/e{$edificios->$terreno}.png' style='float: left;margin: 0;padding:0;'  ></a>";
 	endforeach;
 }
+include("modelos/multialdeias.tpl")
 ?>
 </div>

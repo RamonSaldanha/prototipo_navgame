@@ -2,7 +2,17 @@
 
 	class aldeia
 	{
-		
+		public function multiAldeias($uid)
+		{
+			global $pdo_mysql;
+			$multi_aldeias = $pdo_mysql->select_pdo("aldeia","`uid` = {$uid}");
+			$aldeias_array = array();
+			foreach($multi_aldeias as $aldeias):
+				$aldeias_array[] = $aldeias;
+			endforeach;
+			return $aldeias_array;
+		}
+
 		public function checarArmazem($aid)
 		{
 			global $construcoes;
