@@ -26,4 +26,5 @@ foreach($edificios_data as $edificio):
 		endif;
 		echo "</div><br />";
 endforeach;
+
 ?>

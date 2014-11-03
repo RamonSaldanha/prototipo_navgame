@@ -104,7 +104,6 @@
 			foreach($this->calcularProdEstoque($aid) as $recursos):
 				$aldeia = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
 				$recurso_calcular = ($recursos["producao"] / 3600) * (time() - $aldeia["ult_att"]);
-
 				if($aldeia["madeira"] + $aldeia["comida"] <= $this->checarArmazem($aid)):
 					$pdo_mysql->update_pdo('aldeia',"{$recursos["recurso_nome"]} = {$recursos["recurso_nome"]} + $recurso_calcular","`id` = {$aid}");
 				endif;

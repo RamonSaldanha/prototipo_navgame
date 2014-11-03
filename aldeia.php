@@ -26,9 +26,13 @@ for($t=1;$t <= 9;$t++)
 {
 	$terreno = "t" . $t;
 	foreach ($pdo_mysql->select_pdo("edificios","`aid` = {$_SESSION['aid']}") as $edificios):
-		echo "<a title='' href='construir.php?t={$t}' ><img src='img/e{$edificios->$terreno}.png' style='float: left;margin: 0;padding:0;'  ></a>";
+		if($edificios->$terreno != ""):
+			echo "<a title='' href='edificio.php?ed={$edificios->$terreno}' ><img src='img/e{$edificios->$terreno}.png' style='float: left;margin: 0;padding:0;'  ></a>";
+		else:
+			echo "<a title='' href='construir.php?t={$t}' ><img src='img/e{$edificios->$terreno}.png' style='float: left;margin: 0;padding:0;'  ></a>";
+		endif;
 	endforeach;
 }
-include("modelos/multialdeias.tpl")
+include("modelos/multialdeias.tpl");
 ?>
 </div>
