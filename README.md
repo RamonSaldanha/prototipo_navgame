@@ -4,7 +4,7 @@ RELEASE
 Esse protótipo é uma ferramenta pra posteriores criações mais complexas.
 O desenvolvimento não envolve nenhum capital e nenhum investimento corporativo.
 
-Instalação
+Install
 -------------
 
 Na pasta de instalação você vai encontrar o arquivo de extensão SQL, importe para
@@ -13,11 +13,11 @@ seu banco de dados mysql.
 no arquivo na pasta engine chamado pdo_mysql.php, você vai encontrar onde mudar
 as configurações de conexão com o mysql.
 
-Exemplo
+Demo
 -------------
 O exemplo não é atualizado a cada commit, então, esse exemplo pode ser uma versão ainda antiga. site: http://ramonsaldanha.wc.lt/entrar.php Usuário: Teste Senha: 123456
 
-PROXIMAS COMMITS
+Next commits
 -------------
 - Ao terminar o processo de colheita, você irá receber os recursos que plantou.
 - Recolher recursos de Pedra no processo de construção.
