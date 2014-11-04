@@ -99,15 +99,35 @@
 
 		public function recursosAtt($aid)
 		{
-
 			global $pdo_mysql;
+			
 			foreach($this->calcularProdEstoque($aid) as $recursos):
 				$aldeia = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
-				$recurso_calcular = ($recursos["producao"] / 3600) * (time() - $aldeia["ult_att"]);
-				if($aldeia["madeira"] + $aldeia["comida"] <= $this->checarArmazem($aid)):
-					$pdo_mysql->update_pdo('aldeia',"{$recursos["recurso_nome"]} = {$recursos["recurso_nome"]} + $recurso_calcular","`id` = {$aid}");
-				endif;
+				$recurso_calcular[$recursos['recurso_nome']] = ($recursos["producao"] / 3600) * (time() - $aldeia["ult_att"]). "";
+				$recurso_estoque[$recursos['recurso_nome']] = $aldeia[$recursos["recurso_nome"]];
+			// 	if($aldeia["madeira"] + $aldeia["comida"] <= $this->checarArmazem($aid)):
+			// 		$pdo_mysql->update_pdo('aldeia',"{$recursos["recurso_nome"]} = {$recursos["recurso_nome"]} + $recurso_calcular","`id` = {$aid}");
+			// 	endif;
 			endforeach;
+
+			$produziu_recursos_soma = $recurso_calcular['comida'] + $recurso_calcular['madeira'];
+			$estocado_soma = $recurso_estoque['comida'] + $recurso_estoque['madeira'];
+
+			if($estocado_soma <= $this->checarArmazem($aid)):
+				$estocado_soma = $this->checarArmazem($aid) - $estocado_soma;
+				if($recurso_calcular['madeira'] >= $estocado_soma):
+					$recurso_calcular['madeira'] = $estocado_soma;
+				endif;
+				if($recurso_calcular['comida'] >= $estocado_soma):
+					$recurso_calcular['comida'] = $estocado_soma;
+				endif;
+				// echo "voce produziu de madeira: " . $recurso_calcular['madeira'] . " <br />";
+				// echo "voce produziu de comida: " . $recurso_calcular['comida'] . " <br />";
+				// echo "Soma da sua produção: " . $produziu_recursos_soma . "<br />";
+				// echo "Soma do seu armazem: " . $estocado_soma;
+				$pdo_mysql->update_pdo('aldeia',"`madeira` = madeira + {$recurso_calcular['madeira']}, `comida` = comida + {$recurso_calcular['comida']}","`id` = {$aid}");
+			endif;
+
 			// echo "<b>sua producao por hora:</b> {$this->calcularProd($_SESSION["aid"])[1]} <b>Seu armazem: </b>" . round($aldeia["armazem"]) ;
 		}
 	}
