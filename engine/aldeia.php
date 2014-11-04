@@ -40,7 +40,7 @@
 			$rec_array = array();
 
 			$aldeia = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
-			// aqui ele vai imprimir o recursos_data.php pra verificar se você produz e quanto produz, calcular e registrar
+			// aqui ele vai imprimir o recursos_data.php pra verificar se voc� produz e quanto produz, calcular e registrar
 			// e uma array todas propriedades da sua producao;
 			foreach($recursos_data as $recurso):
 				switch ($recurso["recurso_nome"]):
@@ -78,7 +78,7 @@
 		{
 			global $construcoes;
 			$madeira = PROD_MINIMA;
-			// '2' é o id da construção da madereira, ele vai verificar se existe uma madereira, e vai adicionar
+			// '2' � o id da constru��o da madereira, ele vai verificar se existe uma madereira, e vai adicionar
 			// o bonus na producao, de acordo com a propriedade do edificio...
 			if($construcoes->checarSeExisteEd($aid,2) == "existe"):
 				$madeira += $construcoes->checarPropEdificio(2)['atributo'];
@@ -97,10 +97,32 @@
 			return $comida;
 		}
 
+		public function tempoRecursoAtt($aid,$recurso,$tempo)
+		{
+			global $pdo_mysql;
+			switch($tempo):
+				case "1hrs":
+					$tempo = 3600;
+				break;
+				case "2hrs":
+					$tempo = 3600 * 2;
+				break;
+				case "4hrs":
+					$tempo = 3600 * 4;
+				break;
+				case "6hrs":
+					$tempo = 3600 * 6;
+				break;
+			endswitch;
+			$ult_att = time() + $tempo;
+			$pdo_mysql->update_pdo("aldeia","temp_{$recurso} = $ult_att","`id` = {$aid}");
+			header("Location: aldeia.php");
+		}
+
 		public function recursosAtt($aid)
 		{
 			global $pdo_mysql;
-			
+
 			foreach($this->calcularProdEstoque($aid) as $recursos):
 				$aldeia = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
 				$recurso_calcular[$recursos['recurso_nome']] = ($recursos["producao"] / 3600) * (time() - $aldeia["ult_att"]). "";
@@ -121,10 +143,14 @@
 				if($recurso_calcular['comida'] >= $estocado_soma):
 					$recurso_calcular['comida'] = $estocado_soma;
 				endif;
+
+				// $recurso_produziu_mais = max($recurso_calcular['comida'], $recurso_calcular['madeira']);
 				// echo "voce produziu de madeira: " . $recurso_calcular['madeira'] . " <br />";
 				// echo "voce produziu de comida: " . $recurso_calcular['comida'] . " <br />";
-				// echo "Soma da sua produção: " . $produziu_recursos_soma . "<br />";
-				// echo "Soma do seu armazem: " . $estocado_soma;
+				// echo "Soma da sua produ��o: " . $produziu_recursos_soma . "<br />";
+				// echo "Soma do seu armazem: " . $estocado_soma . "<br />";
+				// echo "recurso que produziu mais: " . $recurso_produziu_mais . "<br />";
+
 				$pdo_mysql->update_pdo('aldeia',"`madeira` = madeira + {$recurso_calcular['madeira']}, `comida` = comida + {$recurso_calcular['comida']}","`id` = {$aid}");
 			endif;
 
