@@ -8,13 +8,13 @@ $recursos_data = array(
 	),
 	array(
 		"id" => "1",
-		"recurso_nome" => "comida",
+		"recurso_nome" => "pedra",
 		"producao" => "%produz%",
 		"estoque" => "%estocado%"
 	),
 	array(
 		"id" => "2",
-		"recurso_nome" => "pedra",
+		"recurso_nome" => "comida",
 		"producao" => "%produz%",
 		"estoque" => "%estocado%"
 	)
