@@ -2,6 +2,7 @@
 // area de inclusao de propriedades importantes
 include_once("data/edificios_data.php");
 include_once("data/recursos_data.php");
+include_once("data/colheita_data.php");
 include_once("modelos/menu.tpl");
 
 include_once("engine/configuracoes.php");

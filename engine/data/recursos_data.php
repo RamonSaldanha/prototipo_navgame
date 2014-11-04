@@ -11,6 +11,12 @@ $recursos_data = array(
 		"recurso_nome" => "comida",
 		"producao" => "%produz%",
 		"estoque" => "%estocado%"
+	),
+	array(
+		"id" => "2",
+		"recurso_nome" => "pedra",
+		"producao" => "%produz%",
+		"estoque" => "%estocado%"
 	)
 );
 

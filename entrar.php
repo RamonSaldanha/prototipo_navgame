@@ -10,6 +10,7 @@ if(!empty($_POST['nome'])):
 endif;
 
 ?>
+
 <form action="entrar.php" method="post">
   usuario: <input type="text" name="nome"><br>
   senha: <input type="password" name="senha"><br>

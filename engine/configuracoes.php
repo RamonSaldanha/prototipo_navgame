@@ -1,4 +1,4 @@
 <?php
-	define("ARMAZEM_MINIMO","300");
-	define("PROD_MINIMA","40");
+	define("ARMAZEM_MINIMO","200");
+	define("PROD_MINIMA","600");
 ?>

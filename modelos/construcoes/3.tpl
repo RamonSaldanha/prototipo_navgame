@@ -1,20 +1,24 @@
 <?php
 
 if(isset($_POST['autenticar'])):
-  $aldeia->tempoRecursoAtt($_SESSION['aid'],"comida", $_POST['tempo_de_coleta']);
+  $aldeia->tempoColheitaAtt($_SESSION['aid'],$_POST['tipo_de_recurso']);
 endif;
 
 $aldeia_checar = $pdo_mysql->select_pdo_where("aldeia","`id` = {$_SESSION['aid']}");
-$tempo = $aldeia_checar["temp_comida"] - time();
+$tempo = $aldeia_checar["temp_colheita"] - time();
 echo $construcoes->checarTempoRestante($tempo);
 
 ?>
 <form action="" method="POST">
-<select name="tempo_de_coleta">
-  <option value="1hrs">Uma Hora</option>
-  <option value="2hrs">Duas Horas</option>
-  <option value="4hrs">Quatro Horas</option>
-  <option value="6hrs">Seis Horas</option>
+
+<select name="tipo_de_recurso">
+<?php
+foreach($colheita_data as $plantar):
+?>
+  <option value="<?=$plantar['colheita_nome']?>"><?=$plantar['colheita_nome']?></option>
+<?php
+endforeach;
+?>
 </select>
 <input type="submit" name="autenticar" />
 </form>

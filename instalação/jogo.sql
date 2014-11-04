@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Out-2014 às 16:10
+-- Generation Time: 04-Nov-2014 às 23:46
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -32,18 +32,21 @@ CREATE TABLE IF NOT EXISTS `aldeia` (
   `aldeia_nome` varchar(255) NOT NULL,
   `ult_att` int(250) NOT NULL,
   `madeira` varchar(255) NOT NULL,
-  `comida` varchar(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `pedra` varchar(255) NOT NULL,
+  `comida` varchar(255) NOT NULL,
+  `temp_colheita` int(255) NOT NULL,
+  `tipo_colheita` varchar(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `aldeia`
 --
 
-INSERT INTO `aldeia` (`id`, `uid`, `aldeia_nome`, `ult_att`, `madeira`, `comida`) VALUES
-(1, 1, 'Trestles', 1414679876, '377.4777777777757', '946.3666666666644'),
-(2, 2, 'Pipeline', 1414681818, '656.6999999999985', '659.0222222222205'),
-(3, 1, 'Peniche', 1414679876, '2.6999999999999966', '2.7444444444444396'),
-(4, 2, 'Mentaway', 1414681818, '2.833333333333304', '2.866666666666637');
+INSERT INTO `aldeia` (`id`, `uid`, `aldeia_nome`, `ult_att`, `madeira`, `pedra`, `comida`, `temp_colheita`, `tipo_colheita`) VALUES
+(1, 1, 'Trestles', 0, '', '', '', 0, ''),
+(2, 2, 'Pipeline', 0, '', '', '', 0, ''),
+(3, 1, 'Peniche', 1415141163, '200', '200', '200', 0, ''),
+(4, 2, 'Mentaway', 0, '', '', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -70,8 +73,8 @@ CREATE TABLE IF NOT EXISTS `edificios` (
 --
 
 INSERT INTO `edificios` (`id`, `aid`, `t1`, `t2`, `t3`, `t4`, `t5`, `t6`, `t7`, `t8`, `t9`) VALUES
-(1, 1, '3', '', '1', '', '', '0', '2', '', ''),
-(2, 2, '2', '', '3', '', '', '', '', '', '1'),
+(1, 1, '', '', '', '', '', '', '', '', ''),
+(2, 2, '', '', '', '', '', '', '', '', ''),
 (3, 3, '', '', '', '', '', '', '', '', ''),
 (4, 4, '', '', '', '', '', '', '', '', '');
 
@@ -87,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `ed_construcao` (
   `terreno` varchar(255) NOT NULL,
   `edificio_tipo` varchar(255) NOT NULL,
   `tempo_construcao` int(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -613,7 +616,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `aldeia`
 --
 ALTER TABLE `aldeia`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `edificios`
 --
@@ -623,7 +626,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `ed_construcao`
 --
 ALTER TABLE `ed_construcao`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `mapa`
 --
