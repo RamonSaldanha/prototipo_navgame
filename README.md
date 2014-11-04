@@ -1,4 +1,4 @@
-Release
+RELEASE
 ============
 
 Esse protótipo é uma ferramenta pra posteriores criações mais complexas.
@@ -16,3 +16,8 @@ as configurações de conexão com o mysql.
 Exemplo
 -------------
 O exemplo não é atualizado a cada commit, então, esse exemplo pode ser uma versão ainda antiga. site: http://ramonsaldanha.wc.lt/entrar.php Usuário: Teste Senha: 123456
+
+PROXIMAS COMMITS
+-------------
+- Ao terminar o processo de colheita, você irá receber os recursos que plantou.
+- Recolher recursos de Pedra no processo de construção.

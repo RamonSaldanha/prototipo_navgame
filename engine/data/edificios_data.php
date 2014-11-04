@@ -28,7 +28,7 @@ $edificios_data = array(
 		"custo_pedra" => "10",
 		"custo_comida" => "",
 		"tempo_construcao" => "15",
-		"atributo" => ""
+		"atributo" => "350"
 	),
 		array(
 		"id" => "3",
@@ -48,7 +48,7 @@ $edificios_data = array(
 		"custo_pedra" => "10",
 		"custo_comida" => "",
 		"tempo_construcao" => "40",
-		"atributo" => "1000"
+		"atributo" => "300"
 	)
 );
 
