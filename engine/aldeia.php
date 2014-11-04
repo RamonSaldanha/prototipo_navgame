@@ -182,7 +182,7 @@
 				$pdo_mysql->update_pdo('aldeia',"`pedra` = pedra + {$recurso_calcular['pedra']}","`id` = {$aid}");
 			endif;
 
-			if($aldeia['comida'] > $this->checarArmazem($aid) || $recurso_calcular['madeira'] > $this->checarArmazem($aid)):
+			if($aldeia['comida'] >= $this->checarArmazem($aid)):
 				$recurso_calcular['comida'] = 0;
 				$pdo_mysql->update_pdo('aldeia',"`comida` = {$this->checarArmazem($aid)}","`id` = {$aid}");
 			endif;
