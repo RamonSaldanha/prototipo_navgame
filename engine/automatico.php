@@ -4,12 +4,11 @@
 	{
 
 
-		public function ultima_checagemAtt($usuario_id)
+		public function ultima_checagemAtt($aid)
 		{
 			global $pdo_mysql;
-			$aldeia = $pdo_mysql->select_pdo_where("aldeia","`id` = {$usuario_id}");
 			$ult_att = time();
-			$pdo_mysql->update_pdo("aldeia","ult_att = $ult_att","`uid` = $usuario_id");
+			$pdo_mysql->update_pdo("aldeia","ult_att = $ult_att","`id` = {$aid}");
 		}
 
 		public function terminarConstrucao($aldeia_id)

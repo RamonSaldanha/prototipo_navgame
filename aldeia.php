@@ -3,11 +3,11 @@ require("engine/autoload.php");
 $pdo_mysql = new pdo_mysql();
 $sessao = new sessao();
 $construcoes = new construcoes();
+$automatico = new automatico();
 $aldeia = new aldeia();
 // FUNÇÕES QUE PRECISAM SER EXECUTADOS SEMPRE QUE VOCÊ ATUALIZAR A PÁGINA
 $aldeia->recursosAtt($_SESSION["aid"]);
-$automatico = new automatico();
-$automatico->ultima_checagemAtt($_SESSION["uid"]);
+$automatico->ultima_checagemAtt($_SESSION["aid"]);
 $automatico->terminarConstrucao($_SESSION["aid"]);
 include_once("modelos/menu_recursos.tpl");
 // CONSTRUÇÕES EM ANDAMENTO
