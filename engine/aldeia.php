@@ -134,27 +134,30 @@
 			header("Location: aldeia.php");
 		}
 
-		public function tempoRecursoAtt($aid,$recurso,$tempo)
-		{
-			global $pdo_mysql;
-			switch($tempo):
-				case "1hrs":
-					$tempo = 3600;
-				break;
-				case "2hrs":
-					$tempo = 3600 * 2;
-				break;
-				case "4hrs":
-					$tempo = 3600 * 4;
-				break;
-				case "6hrs":
-					$tempo = 3600 * 6;
-				break;
-			endswitch;
-			$ult_att = time() + $tempo;
-			$pdo_mysql->update_pdo("aldeia","temp_{$recurso} = $ult_att","`id` = {$aid}");
-			header("Location: aldeia.php");
-		}
+
+		// essa função poderá ser utilizada nas próximas criações de recursos
+		// recursos que não produzirão automaticamente, poderão ser feitos com essa função.
+		// public function tempoRecursoAtt($aid,$recurso,$tempo)
+		// {
+		// 	global $pdo_mysql;
+		// 	switch($tempo):
+		// 		case "1hrs":
+		// 			$tempo = 3600;
+		// 		break;
+		// 		case "2hrs":
+		// 			$tempo = 3600 * 2;
+		// 		break;
+		// 		case "4hrs":
+		// 			$tempo = 3600 * 4;
+		// 		break;
+		// 		case "6hrs":
+		// 			$tempo = 3600 * 6;
+		// 		break;
+		// 	endswitch;
+		// 	$ult_att = time() + $tempo;
+		// 	$pdo_mysql->update_pdo("aldeia","temp_{$recurso} = $ult_att","`id` = {$aid}");
+		// 	header("Location: aldeia.php");
+		// }
 
 		public function recursosAtt($aid)
 		{
