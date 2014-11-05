@@ -1,4 +1,4 @@
-RELEASE
+﻿RELEASE
 ============
 
 Esse protótipo é uma ferramenta pra posteriores criações mais complexas.
@@ -20,4 +20,4 @@ O exemplo não é atualizado a cada commit, então, esse exemplo pode ser uma ve
 Next commits
 -------------
 - Ao terminar o processo de colheita, você irá receber os recursos que plantou.
-- Recolher recursos de Pedra no processo de construção.
+- <strike>Recolher recursos de Pedra no processo de construção.</strike>

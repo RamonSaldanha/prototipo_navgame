@@ -72,7 +72,7 @@
 			// essa condição verificará se existe a construção em algum terreno, ou se o terreno já está sendo usado...
 			if($this->checarRecursos($_SESSION['aid'],$edificio["id"]) != "sem_recursos"):
 				if($construcoes->checarSeExisteEd($_SESSION['aid'],$_GET['e'],$terreno) == ""):
-					$pdo_mysql->update_pdo('aldeia',"`madeira` = madeira - {$edificio_prop['custo_madeira']}","`id` = {$aid}");
+					$pdo_mysql->update_pdo('aldeia',"`madeira` = madeira - '{$edificio_prop['custo_madeira']}' , `pedra` = pedra - '{$edificio_prop['custo_pedra']}'","`id` = {$aid}");
 					$pdo_mysql->insert_pdo("`ed_construcao`","(`id`, `aid`, `terreno`, `edificio_tipo`, `tempo_construcao`) VALUES (NULL, '{$_SESSION['aid']}', '{$terreno}', '{$edificio}', '{$tempo_construcao}');");
 				endif;
 			endif;

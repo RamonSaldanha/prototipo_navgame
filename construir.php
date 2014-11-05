@@ -21,7 +21,7 @@ foreach($edificios_data as $edificio):
 			if($construcoes->checarSeExisteEd($_SESSION['aid'],$edificio["id"],"t" . $_GET['t']) != ""):
 				echo "Já existe essa construção";
 			else:
-				echo "<div >Custos: Madeira({$edificio["custo_madeira"]}) <a href=\"?t={$_GET['t']}&e={$edificio["id"]}\" >Construir</a></div>";
+				echo "<div >Custos: Madeira({$edificio["custo_madeira"]}) Pedra({$edificio["custo_pedra"]})<a href=\"?t={$_GET['t']}&e={$edificio["id"]}\" >Construir</a></div>";
 			endif;
 		endif;
 		echo "</div><br />";
