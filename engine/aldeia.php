@@ -119,22 +119,6 @@
 			return $comida;
 		}
 
-		public function tempoColheitaAtt($aid,$recurso)
-		{
-			global $pdo_mysql,$colheita_data;
-
-			foreach($colheita_data as $plantar):
-				if($plantar['colheita_nome'] == "{$recurso}"):
-					$tempo = $plantar['tempo_prod'];
-					$tipo = $plantar['id'];
-				endif;
-			endforeach;
-			$ult_att = time() + $tempo;
-			$pdo_mysql->update_pdo("aldeia","temp_colheita = $ult_att, tipo_colheita = $tipo ","`id` = {$aid}");
-			header("Location: aldeia.php");
-		}
-
-
 		// essa função poderá ser utilizada nas próximas criações de recursos
 		// recursos que não produzirão automaticamente, poderão ser feitos com essa função.
 		// public function tempoRecursoAtt($aid,$recurso,$tempo)

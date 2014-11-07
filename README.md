@@ -19,5 +19,7 @@ O exemplo não é atualizado a cada commit, então, esse exemplo pode ser uma ve
 
 Next commits
 -------------
-- Ao terminar o processo de colheita, você irá receber os recursos que plantou.
+- Calcular perda que você terá se demorar a receber a fazer a colheita;
+- Nos conjuntos habitacionais, você irá receber população com o decorrer do tempo, cabe a você recebelas ou não.
+- <strike>Ao terminar o processo de colheita, você irá receber os recursos que plantou.</strike>
 - <strike>Recolher recursos de Pedra no processo de construção.</strike>
