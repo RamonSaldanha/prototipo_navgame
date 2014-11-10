@@ -20,7 +20,7 @@ $tempo = $aldeia_checar["temp_colheita"] - time();
 
 if($aldeia_checar["tipo_colheita"] != "" && $tempo < 0):
     $tempo_perdido = -$colheita->percaDeColheita($_SESSION['aid'],$aldeia_checar["tipo_colheita"])["tempo_perdido"];
-    echo "sua colheita está pronta a: " . $construcoes->checarTempoRestante($tempo_perdido) ." você perdeu equivalente a: " . $colheita->percaDeColheita($_SESSION['aid'],$aldeia_checar["tipo_colheita"])["porcentagem_perdida"] . " da sua colheita total <br />";
+    echo "sua colheita está pronta a: " . $construcoes->checarTempoRestante($tempo_perdido) ." você perdeu equivalente a: " . $colheita->percaDeColheita($_SESSION['aid'],$aldeia_checar["tipo_colheita"])["colheita_perdida"] . " da sua colheita total <br />";
     echo "<a href=\"?ed={$_GET['ed']}&coletar=1\">Receber Colheita</a>";
 endif;
 
