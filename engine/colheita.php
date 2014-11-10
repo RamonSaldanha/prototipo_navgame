@@ -25,7 +25,7 @@
 
 			$tempo_perdido = $aldeia_checar["temp_colheita"] - time() . "<br />";
 
-			$porcentagem_perdida = (($deficit_total / $deficit_percentual) * 100);
+			$porcentagem_perdida = (($deficit_total / $deficit_percentual) * DEFICIT_PORCENTAGEM_COLHEITA);
 
 			$deficit_colheita = array(
 				"tempo_perdido" => "{$tempo_perdido}",
