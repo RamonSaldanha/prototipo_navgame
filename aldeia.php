@@ -10,8 +10,8 @@ $aldeia->recursosAtt($_SESSION["aid"]);
 $automatico->ultima_checagemAtt($_SESSION["aid"]);
 $automatico->terminarConstrucao($_SESSION["aid"]);
 include_once("modelos/menu_recursos.tpl");
-// CONSTRUÇÕES EM ANDAMENTO
 
+// CONSTRUÇÕES EM ANDAMENTO
 foreach($pdo_mysql->select_pdo("ed_construcao","`aid` = {$_SESSION['aid']}") as $edificios_construcao):
 	$edificio_prop = $construcoes->checarPropEdificio("{$edificios_construcao->edificio_tipo}");
 	echo "<br /> <b>edificio em construção:</b> ". $edificio_prop["edificio_nome"]. " ficará pronto às ";

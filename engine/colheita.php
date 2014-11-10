@@ -10,6 +10,29 @@
 			$colheita_prop = $colheita_data[$colheita];
 			return $colheita_prop;
 		}
+		
+		public function percaDeColheita($aid,$colheita_tipo)
+		{
+			global $pdo_mysql,$colheita_data;
+			$aldeia_checar = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
+
+			$deficit_percentual = ($colheita_data[$colheita_tipo]['atributo'] / 100) * DEFICIT_PORCENTAGEM_COLHEITA;
+			$deficit_total = ($deficit_percentual / $colheita_data[$colheita_tipo]['tempo_prod']) * ($aldeia_checar["temp_colheita"] - time());
+
+			if(-$deficit_total > $deficit_percentual):
+				$deficit_total = $deficit_percentual;
+			endif;
+
+			$tempo_perdido = $aldeia_checar["temp_colheita"] - time() . "<br />";
+
+			$deficit_colheita = array(
+				"tempo_perdido" => "{$tempo_perdido}",
+				"colheita_perdida" => "{$deficit_total}",
+				// "porcentagem_perdida" => "{$porcentagem_perdida} %",
+			);
+
+			return $deficit_colheita;
+		}
 
 		public function tempoColheitaAtt($aid,$recurso)
 		{
@@ -21,20 +44,24 @@
 					$tipo = $plantar['id'];
 				endif;
 			endforeach;
+
 			$ult_att = time() + $tempo;
 			$pdo_mysql->update_pdo("aldeia","temp_colheita = $ult_att, tipo_colheita = $tipo ","`id` = {$aid}");
+			
 			header("Location: aldeia.php");
 		}
 
 		public function colheitaRecolher($aid)
 		{
 			global $pdo_mysql,$colheita_data;
-			$aldeia_checar = $pdo_mysql->select_pdo_where("aldeia","`id` = {$_SESSION['aid']}");
+			$aldeia_checar = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
+			$tempo = $aldeia_checar["temp_colheita"] - time();
 
-			$colheita_prop = $this->checarPropColheita($aldeia_checar['tipo_colheita']);
-
-			$pdo_mysql->update_pdo("aldeia","comida = comida + {$colheita_prop["atributo"]}, tipo_colheita = \"\", temp_colheita = 0","`id` = {$aid}");
-
+			if($aldeia_checar["tipo_colheita"] != "" && $tempo < 0):
+				$colheita_prop = $this->checarPropColheita($aldeia_checar['tipo_colheita']);
+				$pdo_mysql->update_pdo("aldeia","comida = comida + {$colheita_prop["atributo"]}, tipo_colheita = \"\", temp_colheita = 0","`id` = {$aid}");
+			endif;
+			
 			header("Location: edificio.php?ed=3");
 		}
 
