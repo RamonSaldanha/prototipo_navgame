@@ -20,10 +20,10 @@
 			$deficit_total = ($deficit_percentual / $colheita_data[$colheita_tipo]['tempo_prod']) * ($aldeia_checar["temp_colheita"] - time());
 
 			if(-$deficit_total > $deficit_percentual):
-				$deficit_total = $deficit_percentual;
+				$deficit_total = -$deficit_percentual;
 			endif;
 
-			$tempo_perdido = $aldeia_checar["temp_colheita"] - time() . "<br />";
+			$tempo_perdido = $aldeia_checar["temp_colheita"] - time();
 
 			$porcentagem_perdida = (($deficit_total / $deficit_percentual) * DEFICIT_PORCENTAGEM_COLHEITA);
 
@@ -53,7 +53,7 @@
 			header("Location: aldeia.php");
 		}
 
-		public function colheitaRecolher($aid)
+		public function colheitaRecolher($aid,$colheita_perdida)
 		{
 			global $pdo_mysql,$colheita_data;
 			$aldeia_checar = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
@@ -61,7 +61,9 @@
 
 			if($aldeia_checar["tipo_colheita"] != "" && $tempo < 0):
 				$colheita_prop = $this->checarPropColheita($aldeia_checar['tipo_colheita']);
-				$pdo_mysql->update_pdo("aldeia","comida = comida + {$colheita_prop["atributo"]}, tipo_colheita = \"\", temp_colheita = 0","`id` = {$aid}");
+				// a colheita perdida vai vim em um valor negativo, por isso que operador é um "+", colheita(atributo) + -colheitaperdida
+				$colheita = $colheita_prop["atributo"] + $colheita_perdida; 
+				$pdo_mysql->update_pdo("aldeia","comida = comida + {$colheita}, tipo_colheita = \"\", temp_colheita = 0","`id` = {$aid}");
 			endif;
 			
 			header("Location: edificio.php?ed=3");
