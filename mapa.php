@@ -3,6 +3,7 @@ include("engine/autoload.php");
 $pdo_mysql = new pdo_mysql();
 $sessao = new sessao();
 ?>
+
 <link rel="stylesheet" type="text/css" href="layout.style.css">
 <div style="width: 420px; background-color: #b5e61d; height: 420px;">
 <?php
@@ -11,8 +12,6 @@ if(!empty($_GET['x1'])):
 else:
 	$x1 = 0;
 endif;
-
-
 if(!empty($_GET['y1'])):
 	$y1 = 0 + $_GET['y1'];
 else:

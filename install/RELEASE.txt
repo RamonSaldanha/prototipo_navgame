@@ -39,4 +39,7 @@ e população para construir, o aliado que lhe ajudar, receberá pontos de lealdade
 (PONTOS DE INFLUÊNCIA)
 - Os pontos de inflUência determinará a aliança campeã do jogo
 
-07121926
+(ESPIONAGEM)
+com o espi?o voc? vai poder ter visualiza??o da aldeia do advers?rio de cima, a mesma visualiza??o que voc? tem
+da sua aldeia, de forma que dependendo do quanto voc? conseguir espionar, gastando mais voc? ter? possibilidade
+de visualizar mais edificios.
