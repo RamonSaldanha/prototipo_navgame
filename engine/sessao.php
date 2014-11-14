@@ -21,12 +21,16 @@
 		{
 			global $pdo_mysql;
 			$verificar = $pdo_mysql->select_pdo_where("usuario","`nome` = '$usuario'");
-
+			
 			if(!empty($verificar["nome"])):
 				if($senha == $verificar["senha"]):
 					$_SESSION['usuario'] = $verificar["nome"];
 					$_SESSION['uid'] = $verificar["id"];
+
 					$checar_aldeia = $pdo_mysql->select_pdo_where("aldeia","`uid` = {$verificar['id']}");
+					$checar_mapa = $pdo_mysql->select_pdo_where("mapa","`aid` = {$checar_aldeia['id']}");
+
+					$_SESSION['coordenadas'] = $checar_mapa['x'] .";" . $checar_mapa['y'];
 					$_SESSION['aid'] = $checar_aldeia['id'];
 					header("Location: aldeia.php");
 				else:
@@ -35,6 +39,10 @@
 			else:
 				echo "nao existe nenhuma conta com este nome";
 			endif;
+
+			unset($verificar);
+			unset($checar_mapa);
+			unset($checar_aldeia);
 		}
 
 		public function sair()

@@ -5,9 +5,10 @@
 		public function multiAldeias($uid=null,$mudar_aldeia=null)
 		{
 			global $pdo_mysql;
-
+			
 			if(isset($mudar_aldeia)):
-				$_SESSION['aid'] = $mudar_aldeia;
+				$checar_mapa = $pdo_mysql->select_pdo_where("mapa","`aid` = {$mudar_aldeia}");
+				$_SESSION['coordenadas'] = $checar_mapa['x'] .";" . $checar_mapa['y'];				$_SESSION['aid'] = $mudar_aldeia;
 				header("Location: aldeia.php");
 			endif;
 
@@ -19,6 +20,8 @@
 				endforeach;
 				return $aldeias_array;
 			endif;
+
+			unset($multi_aldeias);
 		}
 
 		public function checarArmazem($aid)

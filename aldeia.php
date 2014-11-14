@@ -10,7 +10,8 @@ $aldeia = new aldeia();
 $aldeia->recursosAtt($_SESSION["aid"]);
 $automatico->ultima_checagemAtt($_SESSION["aid"]);
 $automatico->terminarConstrucao($_SESSION["aid"]);
-include_once("modelos/menu_recursos.tpl");
+include("modelos/menu.tpl");
+include("modelos/menu_recursos.tpl");
 
 // CONSTRUÇÕES EM ANDAMENTO
 foreach($pdo_mysql->select_pdo("ed_construcao","`aid` = {$_SESSION['aid']}") as $edificios_construcao):
@@ -28,9 +29,9 @@ for($t=1;$t <= 9;$t++)
 	$terreno = "t" . $t;
 	foreach ($pdo_mysql->select_pdo("edificios","`aid` = {$_SESSION['aid']}") as $edificios):
 		if($edificios->$terreno != ""):
-			echo "<a title='' href='edificio.php?ed={$edificios->$terreno}' ><img src='img/e{$edificios->$terreno}.png' style='float: left;margin: 0;padding:0;'  ></a>";
+			echo "<a title='' href='edificio.php?ed={$edificios->$terreno}' ><img src='modelo_grafico/img/e{$edificios->$terreno}.png' style='float: left;margin: 0;padding:0;'  ></a>";
 		else:
-			echo "<a title='' href='construir.php?t={$t}' ><img src='img/e{$edificios->$terreno}.png' style='float: left;margin: 0;padding:0;'  ></a>";
+			echo "<a title='' href='construir.php?t={$t}' ><img src='modelo_grafico/img/e{$edificios->$terreno}.png' style='float: left;margin: 0;padding:0;'  ></a>";
 		endif;
 	endforeach;
 }
