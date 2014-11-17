@@ -15,16 +15,14 @@ endif;
 // pronta ou não, e se estiver pronta imprime o link de receber colheita.
 $aldeia_checar = $pdo_mysql->select_pdo_where("aldeia","`id` = {$_SESSION['aid']}");
 $tempo = $aldeia_checar["temp_colheita"] - time();
+$colheita_deficit_prop = $colheita->percaDeColheita($_SESSION['aid'],$aldeia_checar["tipo_colheita"]);
 
 if($aldeia_checar["tipo_colheita"] != "" && $tempo < 0):
-  
   if(isset($_GET['coletar'])):
-    $colheita->colheitaRecolher($_SESSION['aid'],$colheita->percaDeColheita($_SESSION['aid'],$aldeia_checar["tipo_colheita"])["colheita_perdida"]);
+    $colheita->colheitaRecolher($_SESSION['aid'],$colheita_deficit_prop["colheita_perdida"]);
   endif;
-  
-  $tempo_perdido = -$colheita->percaDeColheita($_SESSION['aid'],$aldeia_checar["tipo_colheita"])["tempo_perdido"];
 
-  echo "sua colheita está pronta a: " . $construcoes->checarTempoRestante($tempo_perdido) ." você perdeu equivalente a: " . round($colheita->percaDeColheita($_SESSION['aid'],$aldeia_checar["tipo_colheita"])["porcentagem_perdida"]) . "% / " . round($colheita->percaDeColheita($_SESSION['aid'],$aldeia_checar["tipo_colheita"])["colheita_perdida"]) . " da sua colheita total <br />";
+  echo "sua colheita está pronta a: " . $construcoes->checarTempoRestante(-$colheita_deficit_prop['tempo_perdido']) ." você perdeu equivalente a: " . round($colheita_deficit_prop["porcentagem_perdida"]) . "% / " . round($colheita_deficit_prop["colheita_perdida"]) . " da sua colheita total <br />";
   echo "<a href=\"?ed={$_GET['ed']}&coletar=1\">Receber Colheita</a>";
 endif;
 

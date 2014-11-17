@@ -1,4 +1,5 @@
 <?php
+	error_reporting(0);
 	// aqui indica o minimo que você poderá armazenar, mesmo sem armazém.
 	define("ARMAZEM_MINIMO","200");
 	// aqui indica o minimo que você irá produzir, mesmo sem ter nenhum edificio produtor.
