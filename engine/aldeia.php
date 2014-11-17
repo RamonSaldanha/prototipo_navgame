@@ -97,7 +97,8 @@
 			// '2' � o id da constru��o da madereira, ele vai verificar se existe uma madereira, e vai adicionar
 			// o bonus na producao, de acordo com a propriedade do edificio...
 			if($construcoes->checarSeExisteEd($aid,2) == "existe"):
-				$madeira += $construcoes->checarPropEdificio(2)['atributo'];
+				$checar_prop_ed = $construcoes->checarPropEdificio(2);
+				$madeira += $checar_prop_ed['atributo'];
 			endif;
 
 			return $madeira;
@@ -108,7 +109,8 @@
 			global $construcoes;
 			$pedra = PROD_MINIMA;
 			if($construcoes->checarSeExisteEd($aid,4) == "existe"):
-				$pedra += $construcoes->checarPropEdificio(4)['atributo'];
+				$checar_prop_ed = $construcoes->checarPropEdificio(4);
+				$pedra += $checar_prop_ed['atributo'];
 			endif;
 			return $pedra;
 		}
@@ -118,7 +120,8 @@
 			global $construcoes;
 			$comida = PROD_MINIMA;
 			if($construcoes->checarSeExisteEd($aid,3) == "existe"):
-				$comida += $construcoes->checarPropEdificio(3)['atributo'];
+				$checar_prop_ed = $construcoes->checarPropEdificio(3);
+				$comida += $checar_prop_ed['atributo'];
 			endif;
 			return $comida;
 		}
