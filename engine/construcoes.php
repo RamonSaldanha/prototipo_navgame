@@ -6,7 +6,8 @@
 			global $aldeia;
 
 			foreach($aldeia->calcularProdEstoque($aid) as $seu_estoque):
-				if($this->checarPropEdificio($edificio)["custo_{$seu_estoque["recurso_nome"]}"] <= $seu_estoque['estoque']):
+				$checar_prop_ed = $this->checarPropEdificio($edificio);
+				if($checar_prop_ed["custo_{$seu_estoque["recurso_nome"]}"] <= $seu_estoque['estoque']):
 
 				else:
 					return "sem_recursos";

@@ -29,7 +29,8 @@
 			global $construcoes;
 			$armazem = ARMAZEM_MINIMO;
 			if($construcoes->checarSeExisteEd($aid,1) == "existe"):
-				$armazem += $construcoes->checarPropEdificio(1)['atributo'];
+				$checar_prop_ed = $construcoes->checarPropEdificio(1);
+				$armazem += $checar_prop_ed['atributo'];
 			endif;
 
 			return $armazem;
