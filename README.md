@@ -21,6 +21,7 @@ Next commits
 -------------
 - Nos conjuntos habitacionais, você irá receber população com o decorrer do tempo, cabe a você recebelas ou não;
 - Simplificar sistema de login, de forma que utilize apenas um select, com tabelas relacionadas;
+- Torre de pesquisa, uma árvore de habilidades em uma construção;
 - <strike>Calcular perda que você terá se demorar a receber a fazer a colheita;</strike>
 - <strike>Ao terminar o processo de colheita, você irá receber os recursos que plantou.</strike>
 - <strike>Recolher recursos de Pedra no processo de construção.</strike>
