@@ -17,7 +17,7 @@
 			$aldeia_checar = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
 
 			$deficit_percentual = ($colheita_data[$colheita_tipo]['atributo'] / 100) * DEFICIT_PORCENTAGEM_COLHEITA;
-			$deficit_total = ($deficit_percentual / $colheita_data[$colheita_tipo]['tempo_prod']) * ($aldeia_checar["temp_colheita"] - time());
+			$deficit_total = ($deficit_percentual / ($colheita_data[$colheita_tipo]['tempo_prod'] * 2)) * ($aldeia_checar["temp_colheita"] - time());
 
 			if(-$deficit_total > $deficit_percentual):
 				$deficit_total = -$deficit_percentual;

@@ -36,6 +36,19 @@
 			return $armazem;
 		}
 
+		// aqui checa o quanto você pode abrigar na sua aldeia;
+		public function checarLimiteHabitacional($aid)
+		{
+			global $construcoes;
+			$limite_habitacional = LIMITE_HABITACIONAL_MIN;
+			if($construcoes->checarSeExisteEd($aid,0) == "existe"):
+				$checar_prop_ed = $construcoes->checarPropEdificio(0);
+				$limite_habitacional += $checar_prop_ed['atributo'];
+			endif;
+
+			return $limite_habitacional;
+		}
+
 		public function calcularProdEstoque($aid)
 		{
 
@@ -58,8 +71,6 @@
 						$rec_array[] = preg_replace($modelo, $substituir, $recursos_data[$recurso['id']]);
 					break;
 
-
-
 					case "comida":
 						$modelo[0] = '/%produz%/';
 						$modelo[1] = '/%estocado%/';
@@ -79,6 +90,15 @@
 						$rec_array[] = preg_replace($modelo, $substituir, $recursos_data[$recurso['id']]);
 					break;
 
+					case "pop_ociosa":
+
+						$modelo[0] = '/%ociosa%/';
+						$modelo[1] = '/%ocupada%/';
+						$substituir[0] = round($aldeia[$recurso["recurso_nome"]]);
+						$substituir[1] = round($aldeia["pop_ocupada"]);
+						$rec_array[] = preg_replace($modelo, $substituir, $recursos_data[$recurso['id']]);
+					break;
+
 					case "carvao":
 					// exemplo caso eu queira adicionar outro recurso para produzir a principio eu teria que adicionar outra funcao
 					// pra calcular o quanto produz aqui.
@@ -88,6 +108,14 @@
 			endforeach;
 
 			return $rec_array;
+			unset($aldeia);
+		}
+
+		// calcula quanto você recebe de população quando vem para seu conjunto habitacional
+		public function calcularRecPopulacao($aid)
+		{
+			$rec_populacao = RECEBE_POPULACAO_MIN;
+			return $rec_populacao;
 		}
 
 		private function calcularProdMadeira($aid)
@@ -128,27 +156,24 @@
 
 		// essa função poderá ser utilizada nas próximas criações de recursos
 		// recursos que não produzirão automaticamente, poderão ser feitos com essa função.
-		// public function tempoRecursoAtt($aid,$recurso,$tempo)
-		// {
-		// 	global $pdo_mysql;
-		// 	switch($tempo):
-		// 		case "1hrs":
-		// 			$tempo = 3600;
-		// 		break;
-		// 		case "2hrs":
-		// 			$tempo = 3600 * 2;
-		// 		break;
-		// 		case "4hrs":
-		// 			$tempo = 3600 * 4;
-		// 		break;
-		// 		case "6hrs":
-		// 			$tempo = 3600 * 6;
-		// 		break;
-		// 	endswitch;
-		// 	$ult_att = time() + $tempo;
-		// 	$pdo_mysql->update_pdo("aldeia","temp_{$recurso} = $ult_att","`id` = {$aid}");
-		// 	header("Location: aldeia.php");
-		// }
+		public function tempoBeneficioAtt($aid,$beneficio_tipo,$tempo)
+		{
+			global $pdo_mysql;
+			if($tempo > 0):
+				$ult_att = time() + $tempo;
+				$pdo_mysql->update_pdo("aldeia","temp_{$beneficio_tipo} = $ult_att","`id` = {$aid}");
+				header("Location: aldeia.php");
+			endif;
+		}
+
+		// essa função é o complemento da função anterior, você irá receber o benefício que produziu
+		public function receberBeneficio($aid,$beneficio_tipo,$atributo)
+		{
+			global $pdo_mysql;
+			$ult_att = time() + $tempo;
+			$pdo_mysql->update_pdo("aldeia","{$beneficio_tipo} = {$beneficio_tipo} + {$atributo}","`id` = {$aid}");
+			header("Location: aldeia.php");
+		}
 
 		public function recursosAtt($aid)
 		{

@@ -8,7 +8,7 @@ $edificios_data = array(
 		"custo_pedra" => "10",
 		"custo_comida" => "",
 		"tempo_construcao" => "90",
-		"atributo" => "5000"
+		"atributo" => "12"
 	),
 	array(
 		"id" => "1",
@@ -18,9 +18,9 @@ $edificios_data = array(
 		"custo_pedra" => "70",
 		"custo_comida" => "",
 		"tempo_construcao" => "40",
-		"atributo" => "1000"
+		"atributo" => "3250"
 	),
-		array(
+	array(
 		"id" => "2",
 		"edificio_nome" => "Madereira",
 		"edificio_descricao" => "Área com abundância de árvores, local perfeito para explorar a madeira.",
@@ -28,9 +28,9 @@ $edificios_data = array(
 		"custo_pedra" => "40",
 		"custo_comida" => "",
 		"tempo_construcao" => "15",
-		"atributo" => "350"
+		"atributo" => "55"
 	),
-		array(
+	array(
 		"id" => "3",
 		"edificio_nome" => "Fazenda",
 		"edificio_descricao" => "Produção de comida é necessária para manter sua população alimentada",
@@ -38,9 +38,9 @@ $edificios_data = array(
 		"custo_pedra" => "25",
 		"custo_comida" => "",
 		"tempo_construcao" => "25",
-		"atributo" => "10"
+		"atributo" => ""
 	),
-		array(
+	array(
 		"id" => "4",
 		"edificio_nome" => "Pedreira",
 		"edificio_descricao" => "Aqui é produzido pedra",
@@ -48,7 +48,17 @@ $edificios_data = array(
 		"custo_pedra" => "60",
 		"custo_comida" => "",
 		"tempo_construcao" => "40",
-		"atributo" => "300"
+		"atributo" => "55"
+	),
+	array(
+		"id" => "5",
+		"edificio_nome" => "Torre de pesquisa",
+		"edificio_descricao" => "Aqui é onde os cientistas loucos fazem seus experimentos mirabolantes",
+		"custo_madeira" => "250",
+		"custo_pedra" => "237",
+		"custo_comida" => "",
+		"tempo_construcao" => "240",
+		"atributo" => ""
 	)
 );
 
