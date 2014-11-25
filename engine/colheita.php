@@ -50,7 +50,7 @@
 			$ult_att = time() + $tempo;
 			$pdo_mysql->update_pdo("aldeia","temp_colheita = $ult_att, tipo_colheita = $tipo ","`id` = {$aid}");
 			
-			header("Location: aldeia.php");
+			header("Location: edificio.php?ed=3");
 		}
 
 		public function colheitaRecolher($aid,$colheita_perdida)

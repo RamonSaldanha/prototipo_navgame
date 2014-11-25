@@ -14,4 +14,10 @@ array(
 	array('nome_pesquisa'=>'Academia de musculacao', array('custo_ouro'=>500),array('custo_ouro'=>502),array('custo_ouro'=>506),array('custo_ouro'=>509)),
 );
 
+$economia_pesc = 
+array(
+	1=>array('nome_pesquisa'=>'Melhorar equipamento militar', array('custo_ouro'=>500),array('custo_ouro'=>502),array('custo_ouro'=>506),array('custo_ouro'=>509)),
+	array('nome_pesquisa'=>'Espadachin bem treinado', array('custo_ouro'=>500),array('custo_ouro'=>502),array('custo_ouro'=>506),array('custo_ouro'=>509)),
+	array('nome_pesquisa'=>'Academia de musculacao', array('custo_ouro'=>500),array('custo_ouro'=>502),array('custo_ouro'=>506),array('custo_ouro'=>509)),
+);
 ?>
