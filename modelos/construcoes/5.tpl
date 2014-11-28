@@ -16,9 +16,15 @@ function mudarEndereco()
 	<option value="edificio.php?ed=5&pesq=rec_pesq" <?php if(isset($_GET['pesq']) AND $_GET['pesq'] == "rec_pesq"): echo "selected = 'selected'"; endif; ?>>Produtividade</option>
 	<option value="edificio.php?ed=5&pesq=economia_pesq" <?php if(isset($_GET['pesq']) AND $_GET['pesq'] == "economia_pesq"): echo "selected = 'selected'"; endif; ?>>Economia</option>
 </select>
-
+<br />
 <?php 
-	if(isset($_GET['pesq'])):
-		print_r($$_GET['pesq']);
-	endif;
+if(isset($_GET['pesq'])):
+	$array = $$_GET['pesq'];
+	for($nivel = 1; $nivel <= count($array); $nivel++):
+		echo $array[$nivel]['nome_pesquisa'] . "<br />";
+		for($sub_nivel = 1; $sub_nivel <= (count($array[$nivel])-1); $sub_nivel++):
+			echo "Nível".$sub_nivel." custo de ouro: ".$array[$nivel][$sub_nivel]['custo_ouro'] ."<br />";
+		endfor;
+	endfor;
+endif;
 ?>

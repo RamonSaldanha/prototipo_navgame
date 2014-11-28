@@ -2,6 +2,7 @@
 
 	class aldeia
 	{
+
 		public function multiAldeias($uid=null,$mudar_aldeia=null)
 		{
 			global $pdo_mysql;
@@ -90,14 +91,6 @@
 						$rec_array[] = preg_replace($modelo, $substituir, $recursos_data[$recurso['id']]);
 					break;
 
-					case "pop_ociosa":
-
-						$modelo[0] = '/%ociosa%/';
-						$modelo[1] = '/%ocupada%/';
-						$substituir[0] = round($aldeia[$recurso["recurso_nome"]]);
-						$substituir[1] = round($aldeia["pop_ocupada"]);
-						$rec_array[] = preg_replace($modelo, $substituir, $recursos_data[$recurso['id']]);
-					break;
 
 					case "carvao":
 					// exemplo caso eu queira adicionar outro recurso para produzir a principio eu teria que adicionar outra funcao
@@ -162,17 +155,19 @@
 			if($tempo > 0):
 				$ult_att = time() + $tempo;
 				$pdo_mysql->update_pdo("aldeia","temp_{$beneficio_tipo} = $ult_att","`id` = {$aid}");
-				header("Location: aldeia.php");
 			endif;
 		}
 
 		// essa função é o complemento da função anterior, você irá receber o benefício que produziu
-		public function receberBeneficio($aid,$beneficio_tipo,$atributo)
+		public function receberBeneficio($aid,$beneficio_tipo,$beneficio_subtipo,$atributo)
 		{
 			global $pdo_mysql;
 			$ult_att = time() + $tempo;
-			$pdo_mysql->update_pdo("aldeia","{$beneficio_tipo} = {$beneficio_tipo} + {$atributo}","`id` = {$aid}");
-			header("Location: aldeia.php");
+			if($beneficio_tipo == "aldeia"):
+				$pdo_mysql->update_pdo("aldeia","{$beneficio_subtipo} = {$beneficio_subtipo} + {$atributo}","`id` = {$aid}");
+			else:
+				$pdo_mysql->update_pdo("{$beneficio_tipo}","{$beneficio_subtipo} = {$beneficio_subtipo} + {$atributo}","`id` = {$aid}");
+			endif;
 		}
 
 		public function recursosAtt($aid)
