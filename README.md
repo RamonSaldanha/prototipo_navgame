@@ -20,11 +20,11 @@ O exemplo não é atualizado a cada commit, então, esse exemplo pode ser uma ve
 Next commits
 -------------
 - Data de pesquisa: Torre de pesquisa, uma árvore de habilidades em uma construção;
-- Data de unidades: Tratar população óciosa como uma unidade com força,defesa e etc... toda unidade deverá consumir comida, e pagar impostos;
 - Receita de impostos: os impostos serão arrecadados pelo comércio de comida, ou seja, a população vai comer sua comida, e você vai receber por isso, outras formas deverão ser implantadas pra arrecadar impostos, algum sistema de "Pão e Circo" um tipo de entreterimento que arrecade ouro, como uma festa, uma praça etc;
 - construções com níveis, você irá evolui-las apartir do tower center, que é onde vai gerenciar também as movimentações, tudo que desrespeita a aldeia;
 - Simplificar sistema de login, de forma que utilize apenas um select, com tabelas relacionadas;
 - corrigir sistema de multialdeias, que estão com um bug, você pode mudar pra aldeia que quiser manipulando o metodo get; //correção
+- <strike>Data de unidades: Tratar população óciosa como uma unidade com força,defesa e etc... toda unidade deverá consumir comida, e pagar impostos</strike>;
 - <strike>Nos conjuntos habitacionais, você irá receber população com o decorrer do tempo, cabe a você recebelas ou não;</strike>
 - <strike>Calcular perda que você terá se demorar a receber a fazer a colheita;</strike>
 - <strike>Ao terminar o processo de colheita, você irá receber os recursos que plantou.</strike>
