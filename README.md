@@ -19,6 +19,8 @@ O exemplo não é atualizado a cada commit, então, esse exemplo pode ser uma ve
 
 Next commits
 -------------
+- Fazenda: Criação de porco, gado e ovelha.
+- Água: necessário um sistema de produção de água por hora, através de um edifício poço, a população, também irá consumir água, e ela também será usada pra apagar incêndios.
 - Data de pesquisa: Torre de pesquisa, uma árvore de habilidades em uma construção;
 - Receita de impostos: os impostos serão arrecadados pelo comércio de comida, ou seja, a população vai comer sua comida, e você vai receber por isso, outras formas deverão ser implantadas pra arrecadar impostos, algum sistema de "Pão e Circo" um tipo de entreterimento que arrecade ouro, como uma festa, uma praça etc;
 - construções com níveis, você irá evolui-las apartir do tower center, que é onde vai gerenciar também as movimentações, tudo que desrespeita a aldeia;
