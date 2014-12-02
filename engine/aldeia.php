@@ -125,6 +125,19 @@
 			return $madeira;
 		}
 
+		public function calcularConsumoComida($aid){
+			global $pdo_mysql,$unidade_data;
+			$checar_unidades = $pdo_mysql->select_pdo_where("unidades","`aid` = {$aid}");
+			$consumo_de_comida = 0;
+			$unidade_id = 1;
+			foreach($unidade_data as $unidades){
+				$unidade_id1 = "u" . $unidade_id;
+				$consumo_de_comida = $consumo_de_comida + ($unidades["consumo_comida"] * $checar_unidades["{$unidade_id1}"]);
+				$unidade_id++;
+			}
+			return $consumo_de_comida;
+		}
+
 		private function calcularProdPedra($aid)
 		{
 			global $construcoes;
@@ -173,13 +186,17 @@
 		public function recursosAtt($aid)
 		{
 			global $pdo_mysql;
-
+			$aldeia = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
 			// aqui ele calcula recurso por recurso sua produção por hora
 			foreach($this->calcularProdEstoque($aid) as $recursos):
-				$aldeia = $pdo_mysql->select_pdo_where("aldeia","`id` = {$aid}");
 				$recurso_calcular[$recursos['recurso_nome']] = ($recursos["producao"] / 3600) * (time() - $aldeia["ult_att"]). "";
 				$recurso_estoque[$recursos['recurso_nome']] = $aldeia[$recursos["recurso_nome"]];
 			endforeach;
+
+
+			// consumo de comida por hr total...
+			$comida_por_hr = ($this->calcularConsumoComida($aid) / 3600) * (time() - $aldeia["ult_att"]);
+			
 
 			// aqui ele vai limitar o armazém e prosseguir nas produções
 			if($aldeia['madeira'] >= $this->checarArmazem($aid)):
@@ -200,6 +217,8 @@
 				$recurso_calcular['comida'] = 0;
 				$pdo_mysql->update_pdo('aldeia',"`comida` = {$this->checarArmazem($aid)}","`id` = {$aid}");
 			endif;
+
+			$pdo_mysql->update_pdo('aldeia',"`comida` = comida - {$comida_por_hr}","`id` = {$aid}");
 
 		}
 	}

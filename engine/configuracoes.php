@@ -11,5 +11,7 @@
 	// quanto a sua aldeia recebe de população minima
 	define("TEMPO_POPULACAO","400");
 	// aqui indica o quanto você vai perder da safra, caso não faça a colheita no tempo ideal.
-	define("DEFICIT_PORCENTAGEM_COLHEITA", "12.1") // (MAXIMO 100)
+	define("DEFICIT_PORCENTAGEM_COLHEITA", "99.2"); // (MAXIMO 100)
+	// velocidade com que você perde a colheita, quanto maior, mais devagar!
+	define("TEMPOPERDA_COLHEITA", "25");
 ?>
