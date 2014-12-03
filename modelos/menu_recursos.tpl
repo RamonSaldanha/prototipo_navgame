@@ -1,3 +1,4 @@
+<div>
 <?php
 $recursos = $aldeia->calcularProdEstoque($_SESSION['aid']);
 echo "Madeira (<font size=\"2\">produção</font> " . $recursos[0]["producao"] . " <font size=\"2\">estoque</font> " . $recursos[0]["estoque"] .") - ";

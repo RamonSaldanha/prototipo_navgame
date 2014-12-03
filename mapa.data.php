@@ -3,9 +3,9 @@ include("engine/autoload.php");
 $pdo_mysql = new pdo_mysql();
 $sessao = new sessao();
 ?>
-<script type="text/javascript" src="mapa.js"></script>
+<script type="text/javascript" src="../mapa.js"></script>
 <link rel="stylesheet" type="text/css" href="layout.style.css">
-<div id="conteudo" style="width: 420px; background-color: #b5e61d; height: 420px;">
+<div id="mapa" style="display:block; width: 420px; background-color: #b5e61d; height: 420px;">
 <?php
 if(isset($_GET['x1'])):
 	$x1 = 0 + $_GET['x1'];
@@ -44,7 +44,9 @@ for($x=0 + $x1;$x <= 6 + $x1;$x++)
 
 ?>
 </div>
-<a href="?x1=<?php echo $x1 + 1; ?>">descer</a> | <a href="?x1=<?php echo $x1 - 1; ?>">subir</a> | <a href="?y1=<?php echo $y1 - 1; ?>">esquerda</a> | <a href="?y1=<?php echo $y1 + 1; ?>">direita</a>
-<input id="txtnome" name="txtnome" type="hidden" value="<?php echo $x1; ?>" />
+<input id="coordenadaX" name="coordenadaX" type="hidden" value="<?php echo $x1; ?>" />
+<input id="coordenadaY" name="coordenadaY" type="hidden" value="<?php echo $y1; ?>" />
 <button onclick="moverX('+1')">descer</button>
 <button onclick="moverX('-1')">subir</button>
+<button onclick="moverY('+1')">Direita</button>
+<button onclick="moverY('-1')">Esquerda</button>
