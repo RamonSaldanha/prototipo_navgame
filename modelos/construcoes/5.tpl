@@ -18,12 +18,28 @@ function mudarEndereco()
 </select>
 <br />
 <?php 
+if(!isset($_GET['pesq'])):
+	echo "aqui ficará todos as pesquisas em processo </br>";
+endif;
+if(isset($_GET['addNivel'])):
+	echo "adiciona nível aqui nessa merda porra";
+endif;
+
 if(isset($_GET['pesq'])):
 	$array = $$_GET['pesq'];
 	for($nivel = 1; $nivel <= count($array); $nivel++):
+		// printa todos as hierarquias da pesquisa_data...
+		$pesquisas = $pdo_mysql->select_pdo_where("pesquisa","`uid` = {$_SESSION['uid']}");
+		$nome_tabela = $_GET['pesq'] . $nivel;
 		echo $array[$nivel]['nome_pesquisa'] . "<br />";
 		for($sub_nivel = 1; $sub_nivel <= (count($array[$nivel])-1); $sub_nivel++):
-			echo "Nível".$sub_nivel." custo de ouro: ".$array[$nivel][$sub_nivel]['custo_ouro'] ."<br />";
+			if($pesquisas[$nome_tabela] + 1 < $sub_nivel):
+				echo "<strike><a href=\"?ed=5&addNivel={$nome_tabela}\">Nível".$sub_nivel." custo de ouro: ".$array[$nivel][$sub_nivel]['custo_ouro'] ."</a><br /></strike>";
+			elseif($pesquisas[$nome_tabela] >= $sub_nivel):
+				echo "<a href=\"?ed=5&addNivel={$nome_tabela}\">Nível".$sub_nivel." custo de ouro: ".$array[$nivel][$sub_nivel]['custo_ouro'] ."</a> (você já pesquisou isso.)<br />";
+			else:
+				echo "<a href=\"?ed=5&addNivel={$nome_tabela}\">Nível".$sub_nivel." custo de ouro: ".$array[$nivel][$sub_nivel]['custo_ouro'] ."</a><br />";
+			endif;
 		endfor;
 	endfor;
 endif;

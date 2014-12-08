@@ -3,9 +3,8 @@ include("engine/autoload.php");
 $pdo_mysql = new pdo_mysql();
 $sessao = new sessao();
 ?>
-<script type="text/javascript" src="../mapa.js"></script>
-<link rel="stylesheet" type="text/css" href="layout.style.css">
-<div id="mapa" style="display:block; width: 420px; background-color: #b5e61d; height: 420px;">
+<script type="text/javascript" src="mapa.ajax.js"></script>
+<div id="mapa" style="display:block; width: 420px; height: 420px;">
 <?php
 if(isset($_GET['x1'])):
 	$x1 = 0 + $_GET['x1'];
@@ -24,17 +23,17 @@ for($x=0 + $x1;$x <= 6 + $x1;$x++)
 	{
 		foreach ($pdo_mysql->select_pdo("mapa","`x` LIKE $x AND `y` LIKE $y") as $mapa):
 	      if($mapa->aid != ""):
-	                    echo "<a class='map' name='{$mapa->x};{$mapa->y}' title='{$mapa->x} | {$mapa->y}' href='#{$mapa->x};{$mapa->y}' ><img src='modelo_grafico/img/m4.png' style='float: left;margin: 0;padding:0;'  ></a>";
+	                    echo "<a name='{$mapa->x};{$mapa->y}' title='{$mapa->x} | {$mapa->y}' href='#{$mapa->x};{$mapa->y}' ><img src='modelo_grafico/img/m4.png' style='float: left;margin: 0;padding:0;'  ></a>";
 	      else:
 	        switch($mapa->tip){
 	          case 1:
-	            echo "<a class='map' name='{$mapa->x};{$mapa->y}' title='{$mapa->x} | {$mapa->y}' href='#{$mapa->x};{$mapa->y}' ><img src='modelo_grafico/img/m1.png' style='float: left;margin: 0;padding:0;'  ></a>";
+	            echo "<a name='{$mapa->x};{$mapa->y}' title='{$mapa->x} | {$mapa->y}' href='#{$mapa->x};{$mapa->y}' ><img src='modelo_grafico/img/m1.png' style='float: left;margin: 0;padding:0;'  ></a>";
 	          break;
 	          case 2:
-	            echo "<a class='map' name='{$mapa->x};{$mapa->y}' title='{$mapa->x} | {$mapa->y}' href='#{$mapa->x};{$mapa->y}' ><img src='modelo_grafico/img/m2.png' style='float: left;margin: 0;padding:0;'  ></a>";
+	            echo "<a name='{$mapa->x};{$mapa->y}' title='{$mapa->x} | {$mapa->y}' href='#{$mapa->x};{$mapa->y}' ><img src='modelo_grafico/img/m2.png' style='float: left;margin: 0;padding:0;'  ></a>";
 	          break;
 	          case 3:
-	            echo "<a class='map' name='{$mapa->x};{$mapa->y}' title='{$mapa->x} | {$mapa->y}' href='#{$mapa->x};{$mapa->y}' ><img src='modelo_grafico/img/m3.png' style='float: left;margin: 0;padding:0;'  ></a>";
+	            echo "<a  name='{$mapa->x};{$mapa->y}' title='{$mapa->x} | {$mapa->y}' href='#{$mapa->x};{$mapa->y}' ><img src='modelo_grafico/img/m3.png' style='float: left;margin: 0;padding:0;'  ></a>";
 	          break;
 	        }
 	      endif;

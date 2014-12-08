@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Nov-2014 às 16:24
+-- Generation Time: 08-Dez-2014 às 15:41
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -33,8 +33,6 @@ CREATE TABLE IF NOT EXISTS `aldeia` (
   `ult_att` int(250) NOT NULL,
   `madeira` varchar(255) NOT NULL,
   `pedra` varchar(255) NOT NULL,
-  `pop_ociosa` varchar(255) NOT NULL,
-  `pop_ocupada` varchar(255) NOT NULL,
   `temp_pop_ociosa` int(255) NOT NULL,
   `comida` varchar(255) NOT NULL,
   `temp_colheita` int(255) NOT NULL,
@@ -45,11 +43,11 @@ CREATE TABLE IF NOT EXISTS `aldeia` (
 -- Extraindo dados da tabela `aldeia`
 --
 
-INSERT INTO `aldeia` (`id`, `uid`, `aldeia_nome`, `ult_att`, `madeira`, `pedra`, `pop_ociosa`, `pop_ocupada`, `temp_pop_ociosa`, `comida`, `temp_colheita`, `tipo_colheita`) VALUES
-(1, 1, 'Trestles', 1416322728, '', '', '13', '', 1416323065, '1582.1999999999998', 1416321874, '0'),
-(2, 2, 'Pipeline', 1415974742, '', '', '', '', 0, '', 0, ''),
-(3, 1, 'Peniche', 1416324126, '25.981111111111108', '2534.7380555555524', '4', '', 1416323185, '1054.8', 0, ''),
-(4, 2, 'Mentaway', 1415974730, '', '', '', '', 0, '', 0, '');
+INSERT INTO `aldeia` (`id`, `uid`, `aldeia_nome`, `ult_att`, `madeira`, `pedra`, `temp_pop_ociosa`, `comida`, `temp_colheita`, `tipo_colheita`) VALUES
+(1, 1, 'Trestles', 1418049646, '3850', '3850', 1417524631, '-169740.50336000134', 0, ''),
+(2, 2, 'Pipeline', 1415974742, '', '', 0, '', 0, ''),
+(3, 1, 'Peniche', 1417703794, '3850', '3850', 1417526235, '2943.0216666666734', 1417524085, '0'),
+(4, 2, 'Mentaway', 1417187768, '600', '600', 1417188126, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -78,8 +76,8 @@ CREATE TABLE IF NOT EXISTS `edificios` (
 INSERT INTO `edificios` (`id`, `aid`, `t1`, `t2`, `t3`, `t4`, `t5`, `t6`, `t7`, `t8`, `t9`) VALUES
 (1, 1, '1', '3', '0', '5', '2', '4', '', '', ''),
 (2, 2, '', '', '', '', '', '', '', '', ''),
-(3, 3, '1', '', '2', '', '', '3', '', '4', '0'),
-(4, 4, '', '', '', '', '', '', '', '', '');
+(3, 3, '1', '', '2', '', '5', '3', '', '4', '0'),
+(4, 4, '', '', '0', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -93,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `ed_construcao` (
   `terreno` varchar(255) NOT NULL,
   `edificio_tipo` varchar(255) NOT NULL,
   `tempo_construcao` int(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -10326,6 +10324,57 @@ INSERT INTO `mapa` (`id`, `aid`, `x`, `y`, `tip`, `subtip`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `pesquisa`
+--
+
+CREATE TABLE IF NOT EXISTS `pesquisa` (
+`id` int(11) NOT NULL,
+  `uid` int(255) NOT NULL,
+  `rec_pesq1` int(255) NOT NULL,
+  `rec_pesq2` int(255) NOT NULL,
+  `rec_pesq3` int(255) NOT NULL,
+  `militar_pesq1` int(255) NOT NULL,
+  `militar_pesq2` int(255) NOT NULL,
+  `militar_pesq3` int(255) NOT NULL,
+  `economia_pesq1` int(255) NOT NULL,
+  `economia_pesq2` int(255) NOT NULL,
+  `economia_pesq3` int(255) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `pesquisa`
+--
+
+INSERT INTO `pesquisa` (`id`, `uid`, `rec_pesq1`, `rec_pesq2`, `rec_pesq3`, `militar_pesq1`, `militar_pesq2`, `militar_pesq3`, `economia_pesq1`, `economia_pesq2`, `economia_pesq3`) VALUES
+(1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `unidades`
+--
+
+CREATE TABLE IF NOT EXISTS `unidades` (
+`id` int(11) NOT NULL,
+  `aid` int(255) NOT NULL,
+  `u1` int(255) NOT NULL,
+  `u2` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Extraindo dados da tabela `unidades`
+--
+
+INSERT INTO `unidades` (`id`, `aid`, `u1`, `u2`) VALUES
+(1, 1, 600, 0),
+(2, 2, 0, 0),
+(3, 3, 4, 0),
+(4, 4, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuario`
 --
 
@@ -10373,6 +10422,18 @@ ALTER TABLE `mapa`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pesquisa`
+--
+ALTER TABLE `pesquisa`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `unidades`
+--
+ALTER TABLE `unidades`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
@@ -10396,12 +10457,22 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `ed_construcao`
 --
 ALTER TABLE `ed_construcao`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mapa`
 --
 ALTER TABLE `mapa`
 MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10202;
+--
+-- AUTO_INCREMENT for table `pesquisa`
+--
+ALTER TABLE `pesquisa`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `unidades`
+--
+ALTER TABLE `unidades`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `usuario`
 --

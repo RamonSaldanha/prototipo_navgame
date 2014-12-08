@@ -45,7 +45,7 @@ function moverX(coordenada)
 	var calculo = parseInt(x1)+parseInt(coordenada);
 	// Variável com os dados que serão enviados ao PHP
 	var dados = "x1="+calculo+"&y1="+y1;
-	ajax.open("GET", "mapa.data.php?"+dados, false);
+	ajax.open("GET", "mapa_hex.data.php?"+dados, false);
 	ajax.setRequestHeader("Content-Type", "text/html");
 	ajax.send();
 }
@@ -65,7 +65,7 @@ function moverY(coordenada)
 	var calculo = parseInt(y1)+parseInt(coordenada);
 	// Variável com os dados que serão enviados ao PHP
 	var dados = "x1="+x1+"&y1="+calculo;
-	ajax.open("GET", "mapa.data.php?"+dados, false);
+	ajax.open("GET", "mapa_hex.data.php?"+dados, false);
 	ajax.setRequestHeader("Content-Type", "text/html");
 	ajax.send();
 }
