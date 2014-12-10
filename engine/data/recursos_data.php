@@ -18,15 +18,12 @@ $recursos_data = array(
 		"producao" => "%produz%",
 		"estoque" => "%estocado%"
 	),
-	//aqui é diferente, porque nesse caso é um recursos adicional com tratamento especial...
 	array(
 		"id" => "3",
-		"recurso_nome" => "pop_ociosa",
-		"producao" => "",
-		"estoque" => "",
-		"ociosa" => "%ociosa%",
-		"ocupada" => "%ocupada%"
-	)
+		"recurso_nome" => "agua",
+		"producao" => "%produz%",
+		"estoque" => "%estocado%"
+	),
 );
 
 ?>

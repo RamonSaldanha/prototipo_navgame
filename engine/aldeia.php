@@ -91,6 +91,15 @@
 						$rec_array[] = preg_replace($modelo, $substituir, $recursos_data[$recurso['id']]);
 					break;
 
+					case "agua":
+						// caso o nome do recurso seja madeira, ele vai entrar e calcular de acordo com sua producao, ele substitui
+						// %produz% e %estocado% pela producao e o estoque real.. e adiciona a array $rec_array[];
+						$modelo[0] = '/%produz%/';
+						$modelo[1] = '/%estocado%/';
+						$substituir[0] = $this->calcularProdAgua($aid);
+						$substituir[1] = round($aldeia[$recurso["recurso_nome"]]);
+						$rec_array[] = preg_replace($modelo, $substituir, $recursos_data[$recurso['id']]);
+					break;
 
 					case "carvao":
 					// exemplo caso eu queira adicionar outro recurso para produzir a principio eu teria que adicionar outra funcao
@@ -125,17 +134,34 @@
 			return $madeira;
 		}
 
-		public function calcularConsumoComida($aid){
+		public function calcularConsumoPop($aid){
 			global $pdo_mysql,$unidade_data;
 			$checar_unidades = $pdo_mysql->select_pdo_where("unidades","`aid` = {$aid}");
-			$consumo_de_comida = 0;
+			$consumo = array();
+			$consumo['comida'] = 0;
+			$consumo['agua'] = 0;
 			$unidade_id = 1;
 			foreach($unidade_data as $unidades){
 				$unidade_id1 = "u" . $unidade_id;
-				$consumo_de_comida = $consumo_de_comida + ($unidades["consumo_comida"] * $checar_unidades["{$unidade_id1}"]);
+				$consumo['comida'] = $consumo['comida'] + ($unidades["consumo_comida"] * $checar_unidades["{$unidade_id1}"]);
+				$consumo['agua'] = $consumo['agua'] + ($unidades["consumo_agua"] * $checar_unidades["{$unidade_id1}"]);
 				$unidade_id++;
 			}
-			return $consumo_de_comida;
+			return $consumo;
+		}
+
+		private function calcularProdAgua($aid)
+		{
+			global $construcoes;
+			$agua = PROD_MINIMA;
+
+			if($construcoes->checarSeExisteEd($aid,6) == "existe"):
+				$checar_prop_ed = $construcoes->checarPropEdificio(4);
+				$consumo = $this->calcularConsumoPop($aid);
+				$agua += $checar_prop_ed['atributo'] - $consumo['agua'];
+			endif;
+
+			return $agua;
 		}
 
 		private function calcularProdPedra($aid)
@@ -195,7 +221,8 @@
 
 
 			// consumo de comida por hr total...
-			$comida_por_hr = ($this->calcularConsumoComida($aid) / 3600) * (time() - $aldeia["ult_att"]);
+			$consumo = $this->calcularConsumoPop($aid);
+			$comida_por_hr = ($consumo['comida'] / 3600) * (time() - $aldeia["ult_att"]);
 			
 
 			// aqui ele vai limitar o armazém e prosseguir nas produções
@@ -208,6 +235,13 @@
 
 			if($aldeia['pedra'] >= $this->checarArmazem($aid)):
 				$recurso_calcular['pedra'] = 0;
+				$pdo_mysql->update_pdo('aldeia',"`agua` = {$this->checarArmazem($aid)}","`id` = {$aid}");
+			else:
+				$pdo_mysql->update_pdo('aldeia',"`agua` = agua + {$recurso_calcular['agua']}","`id` = {$aid}");
+			endif;
+
+			if($aldeia['agua'] >= $this->checarArmazem($aid)):
+				$recurso_calcular['agua'] = 0;
 				$pdo_mysql->update_pdo('aldeia',"`pedra` = {$this->checarArmazem($aid)}","`id` = {$aid}");
 			else:
 				$pdo_mysql->update_pdo('aldeia',"`pedra` = pedra + {$recurso_calcular['pedra']}","`id` = {$aid}");
