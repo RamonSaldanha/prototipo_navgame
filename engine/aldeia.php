@@ -235,16 +235,16 @@
 
 			if($aldeia['pedra'] >= $this->checarArmazem($aid)):
 				$recurso_calcular['pedra'] = 0;
-				$pdo_mysql->update_pdo('aldeia',"`agua` = {$this->checarArmazem($aid)}","`id` = {$aid}");
+				$pdo_mysql->update_pdo('aldeia',"`pedra` = {$this->checarArmazem($aid)}","`id` = {$aid}");
 			else:
-				$pdo_mysql->update_pdo('aldeia',"`agua` = agua + {$recurso_calcular['agua']}","`id` = {$aid}");
+				$pdo_mysql->update_pdo('aldeia',"`pedra` = pedra + {$recurso_calcular['pedra']}","`id` = {$aid}");
 			endif;
 
 			if($aldeia['agua'] >= $this->checarArmazem($aid)):
 				$recurso_calcular['agua'] = 0;
-				$pdo_mysql->update_pdo('aldeia',"`pedra` = {$this->checarArmazem($aid)}","`id` = {$aid}");
+				$pdo_mysql->update_pdo('aldeia',"`agua` = {$this->checarArmazem($aid)}","`id` = {$aid}");
 			else:
-				$pdo_mysql->update_pdo('aldeia',"`pedra` = pedra + {$recurso_calcular['pedra']}","`id` = {$aid}");
+				$pdo_mysql->update_pdo('aldeia',"`agua` = agua + {$recurso_calcular['agua']}","`id` = {$aid}");
 			endif;
 
 			if($aldeia['comida'] >= $this->checarArmazem($aid)):
