@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Dez-2014 às 15:41
+-- Generation Time: 18-Dez-2014 às 14:49
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `aldeia` (
   `pedra` varchar(255) NOT NULL,
   `temp_pop_ociosa` int(255) NOT NULL,
   `comida` varchar(255) NOT NULL,
+  `agua` varchar(255) NOT NULL,
   `temp_colheita` int(255) NOT NULL,
   `tipo_colheita` varchar(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
@@ -43,11 +44,11 @@ CREATE TABLE IF NOT EXISTS `aldeia` (
 -- Extraindo dados da tabela `aldeia`
 --
 
-INSERT INTO `aldeia` (`id`, `uid`, `aldeia_nome`, `ult_att`, `madeira`, `pedra`, `temp_pop_ociosa`, `comida`, `temp_colheita`, `tipo_colheita`) VALUES
-(1, 1, 'Trestles', 1418049646, '3850', '3850', 1417524631, '-169740.50336000134', 0, ''),
-(2, 2, 'Pipeline', 1415974742, '', '', 0, '', 0, ''),
-(3, 1, 'Peniche', 1417703794, '3850', '3850', 1417526235, '2943.0216666666734', 1417524085, '0'),
-(4, 2, 'Mentaway', 1417187768, '600', '600', 1417188126, '', 0, '');
+INSERT INTO `aldeia` (`id`, `uid`, `aldeia_nome`, `ult_att`, `madeira`, `pedra`, `temp_pop_ociosa`, `comida`, `agua`, `temp_colheita`, `tipo_colheita`) VALUES
+(1, 1, 'Trestles', 1418910591, '2921.534999999964', '2919.766944444408', 1418395677, '1795.9955999997712', '509.87949999992134', 0, ''),
+(2, 2, 'Pipeline', 1418753025, '310.8266666666659', '520.8266666666659', 0, '0', '600', 0, ''),
+(3, 1, 'Peniche', 1418744802, '3850', '3850', 1418219102, '1806.976555555567', '3850', 1417524085, '0'),
+(4, 2, 'Mentaway', 1418748428, '1069.7197222222253', '1090.826666666659', 1418748744, '-54.526666666667296', '1130.8266666666582', 0, '');
 
 -- --------------------------------------------------------
 
@@ -74,10 +75,10 @@ CREATE TABLE IF NOT EXISTS `edificios` (
 --
 
 INSERT INTO `edificios` (`id`, `aid`, `t1`, `t2`, `t3`, `t4`, `t5`, `t6`, `t7`, `t8`, `t9`) VALUES
-(1, 1, '1', '3', '0', '5', '2', '4', '', '', ''),
-(2, 2, '', '', '', '', '', '', '', '', ''),
-(3, 3, '1', '', '2', '', '5', '3', '', '4', '0'),
-(4, 4, '', '', '0', '', '', '', '', '', '');
+(1, 1, '1', '3', '0', '5', '2', '4', '6', '', ''),
+(2, 2, '', '', '0', '', '', '', '', '', ''),
+(3, 3, '1', '6', '2', '', '5', '3', '', '4', '0'),
+(4, 4, '', '', '0', '', '', '1', '', '', '2');
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,14 @@ CREATE TABLE IF NOT EXISTS `ed_construcao` (
   `terreno` varchar(255) NOT NULL,
   `edificio_tipo` varchar(255) NOT NULL,
   `tempo_construcao` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Extraindo dados da tabela `ed_construcao`
+--
+
+INSERT INTO `ed_construcao` (`id`, `aid`, `terreno`, `edificio_tipo`, `tempo_construcao`) VALUES
+(4, 2, 't6', '1', 1418752959);
 
 -- --------------------------------------------------------
 
@@ -10359,18 +10367,19 @@ CREATE TABLE IF NOT EXISTS `unidades` (
 `id` int(11) NOT NULL,
   `aid` int(255) NOT NULL,
   `u1` int(255) NOT NULL,
-  `u2` int(11) NOT NULL
+  `u2` int(11) NOT NULL,
+  `u3` int(255) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `unidades`
 --
 
-INSERT INTO `unidades` (`id`, `aid`, `u1`, `u2`) VALUES
-(1, 1, 600, 0),
-(2, 2, 0, 0),
-(3, 3, 4, 0),
-(4, 4, 0, 0);
+INSERT INTO `unidades` (`id`, `aid`, `u1`, `u2`, `u3`) VALUES
+(1, 1, 14, 0, 0),
+(2, 2, 0, 0, 0),
+(3, 3, 1, 0, 0),
+(4, 4, 4, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -10457,7 +10466,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `ed_construcao`
 --
 ALTER TABLE `ed_construcao`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `mapa`
 --

@@ -34,7 +34,7 @@
 		$aldeia = new aldeia();
 
 		// FUNÇÕES QUE PRECISAM SER EXECUTADOS SEMPRE QUE VOCÊ ATUALIZAR A PÁGINA
-		$aldeia->recursosAtt($_SESSION["aid"]);
+		$automatico->terminarConstrucao($_SESSION["aid"]);
 		include("modelos/menu.tpl");
 		?>
 		<div id="recursos"></div>
