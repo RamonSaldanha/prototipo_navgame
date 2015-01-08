@@ -1,9 +1,6 @@
 <?php
-
 	class automatico
 	{
-
-
 		public function ultima_checagemAtt($aid)
 		{
 			global $pdo_mysql;

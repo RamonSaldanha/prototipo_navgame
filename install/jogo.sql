@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Dez-2014 às 14:49
+-- Generation Time: 08-Jan-2015 às 15:21
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `aldeia` (
 --
 
 INSERT INTO `aldeia` (`id`, `uid`, `aldeia_nome`, `ult_att`, `madeira`, `pedra`, `temp_pop_ociosa`, `comida`, `agua`, `temp_colheita`, `tipo_colheita`) VALUES
-(1, 1, 'Trestles', 1418910591, '2921.534999999964', '2919.766944444408', 1418395677, '1795.9955999997712', '509.87949999992134', 0, ''),
+(1, 1, 'Trestles', 1420642410, '3850', '3850', 1418395677, '-6250.66573333386', '3850', 0, ''),
 (2, 2, 'Pipeline', 1418753025, '310.8266666666659', '520.8266666666659', 0, '0', '600', 0, ''),
 (3, 1, 'Peniche', 1418744802, '3850', '3850', 1418219102, '1806.976555555567', '3850', 1417524085, '0'),
 (4, 2, 'Mentaway', 1418748428, '1069.7197222222253', '1090.826666666659', 1418748744, '-54.526666666667296', '1130.8266666666582', 0, '');
@@ -10360,6 +10360,27 @@ INSERT INTO `pesquisa` (`id`, `uid`, `rec_pesq1`, `rec_pesq2`, `rec_pesq3`, `mil
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `pesq_andamento`
+--
+
+CREATE TABLE IF NOT EXISTS `pesq_andamento` (
+`id` int(250) NOT NULL,
+  `uid` int(250) NOT NULL,
+  `pesquisa` varchar(250) NOT NULL,
+  `pesq_tipo` int(255) NOT NULL,
+  `tempo_pesquisa` varchar(250) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+
+--
+-- Extraindo dados da tabela `pesq_andamento`
+--
+
+INSERT INTO `pesq_andamento` (`id`, `uid`, `pesquisa`, `pesq_tipo`, `tempo_pesquisa`) VALUES
+(45, 1, 'rec_pesq', 1, '1420639211');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `unidades`
 --
 
@@ -10437,6 +10458,12 @@ ALTER TABLE `pesquisa`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pesq_andamento`
+--
+ALTER TABLE `pesq_andamento`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `unidades`
 --
 ALTER TABLE `unidades`
@@ -10477,6 +10504,11 @@ MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10202;
 --
 ALTER TABLE `pesquisa`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `pesq_andamento`
+--
+ALTER TABLE `pesq_andamento`
+MODIFY `id` int(250) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `unidades`
 --
