@@ -8,6 +8,20 @@
 			$pdo_mysql->update_pdo("aldeia","ult_att = $ult_att","`id` = {$aid}");
 		}
 
+		public function terminarPesquisas($uid)
+		{
+			global $pdo_mysql;
+			if(count($pdo_mysql->select_pdo("pesq_andamento","`uid` = {$uid}")) > 0):
+				foreach($pdo_mysql->select_pdo("pesq_andamento","`uid` = {$uid}") as $pesquisas):
+					if($pesquisas->tempo_pesquisa - time() < 0):
+						$pesq_tipo = $pesquisas->pesquisa . $pesquisas->pesq_tipo;
+						$pdo_mysql->update_pdo('pesquisa',"`{$pesq_tipo}` = {$pesq_tipo} + 1","`uid` = {$uid}");
+						$pdo_mysql->delete_pdo('pesq_andamento',"`uid` = {$uid}");
+					endif;
+				endforeach;	
+			endif;
+		}
+
 		public function terminarConstrucao($aldeia_id)
 		{
 			global $pdo_mysql;
@@ -26,5 +40,4 @@
 		}
 
 	}
-
 ?>

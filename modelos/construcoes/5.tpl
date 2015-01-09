@@ -1,4 +1,5 @@
 <?php
+$automatico->terminarPesquisas($_SESSION['uid']);
 $checar_ed = $construcoes->checarPropEdificio($_GET['ed']);
 echo "<b>{$checar_ed['edificio_nome']}</b><br />";
 ?>
@@ -69,6 +70,7 @@ if(isset($_GET['pesq_tipo'])):
 			$tempo_pesq = time() + ${$_GET['pesq_tipo']}[$_GET['pesq_id']][$nivel_pesquisa]['tempo_pesq'];
 			$pdo_mysql->insert_pdo("pesq_andamento","(`id`, `uid`, `pesquisa`, `pesq_tipo`, `tempo_pesquisa`) VALUES (NULL, '{$_SESSION['uid']}', '{$_GET['pesq_tipo']}', '{$_GET['pesq_id']}', '{$tempo_pesq}');");
 		endforeach;
+		header("Location: ?ed=5");
 	else:
 		header("Location: ?ed=5");
 	endif;

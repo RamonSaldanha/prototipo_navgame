@@ -9,9 +9,9 @@ array(
 
 $militar_pesq = 
 array(
-	1=>array('nome_pesquisa'=>'Melhorar equipamento militar', 1=>array('custo_ouro'=>206, 'tempo_pesq'=>1600),array('custo_ouro'=>208, 'tempo_pesq'=>2600),array('custo_ouro'=>209,'tempo_pesq'=>1600)),
-	array('nome_pesquisa'=>'Espadachin bem treinado', 1=>array('custo_ouro'=>206, 'tempo_pesq'=>1600),array('custo_ouro'=>208, 'tempo_pesq'=>2600),array('custo_ouro'=>209,'tempo_pesq'=>1600)),
-	array('nome_pesquisa'=>'Academia de musculacao', 1=>array('custo_ouro'=>206, 'tempo_pesq'=>1600),array('custo_ouro'=>208, 'tempo_pesq'=>2600),array('custo_ouro'=>209,'tempo_pesq'=>1600)),
+	1=>array('nome_pesquisa'=>'Melhorar equipamento militar', 1=>array('custo_ouro'=>206, 'tempo_pesq'=>10),array('custo_ouro'=>208, 'tempo_pesq'=>20),array('custo_ouro'=>209,'tempo_pesq'=>30)),
+	array('nome_pesquisa'=>'Espadachin bem treinado', 1=>array('custo_ouro'=>206, 'tempo_pesq'=>10),array('custo_ouro'=>208, 'tempo_pesq'=>2600),array('custo_ouro'=>209,'tempo_pesq'=>1600)),
+	array('nome_pesquisa'=>'Academia de musculacao', 1=>array('custo_ouro'=>206, 'tempo_pesq'=>20),array('custo_ouro'=>208, 'tempo_pesq'=>2600),array('custo_ouro'=>209,'tempo_pesq'=>1600)),
 );
 
 $economia_pesq = 
