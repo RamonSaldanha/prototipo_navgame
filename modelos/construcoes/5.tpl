@@ -83,8 +83,9 @@ if(isset($_GET['pesq'])):
 		// printa todos as hierarquias da pesquisa_data...
 		$pesquisas = $pdo_mysql->select_pdo_where("pesquisa","`uid` = {$_SESSION['uid']}");
 		$nome_tabela = $_GET['pesq'];
-		echo $array[$nivel]['nome_pesquisa'] . "<br />";
+		echo "<b>".$array[$nivel]['nome_pesquisa'] . "</b><br />";
 		for($sub_nivel = 1; $sub_nivel <= (count($array[$nivel])-1); $sub_nivel++):
+			echo $array[$nivel][$sub_nivel]['nome_subpesq'] . "<br />";
 			if($pesquisas[($nome_tabela . $nivel)] + 1 < $sub_nivel):
 				echo "<strike><a href=\"?ed=5&pesq_tipo={$nome_tabela}&pesq_id={$nivel}\">Nível ".$sub_nivel." custo de ouro: ".$array[$nivel][$sub_nivel]['custo_ouro'] ."</a><br /></strike>";
 			elseif($pesquisas[($nome_tabela . $nivel)] >= $sub_nivel):

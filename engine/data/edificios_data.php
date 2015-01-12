@@ -84,6 +84,18 @@ $edificios_data = array(
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "240",
 		"atributo" => ""
+	),
+	array(
+		"id" => "7",
+		"edificio_nome" => "Prefeitura",
+		"edificio_descricao" => "a água é muito importante para apagar incêndios e manter a população sem sede, também é usada na irrigação das plantações.",
+		"custo_madeira" => "50",
+		"custo_pedra" => "50",
+		"custo_comida" => "",
+		"custo_agua" => "",
+		"custo_mao_de_obra" => "",
+		"tempo_construcao" => "20",
+		"atributo" => ""
 	)
 );
 

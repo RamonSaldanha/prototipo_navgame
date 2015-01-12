@@ -25,6 +25,24 @@
 			unset($multi_aldeias);
 		}
 
+		public function verificarPesquisas($uid)
+		{
+			global $pdo_mysql,$rec_pesq,$militar_pesq,$economia_pesq;
+			$pesq_select = $pdo_mysql->select_pdo_where("pesquisa","`uid` = {$uid}");
+			foreach($pesq_select as $tabela => $valor):
+				if($tabela != "id" && $tabela != "uid"):
+					if($valor > 0):
+						$tipo_pesq = substr($tabela, 0, -1);
+						$array = $$tipo_pesq;
+						$nivel_pesq = substr($tabela, -1);
+						echo $array[$nivel_pesq][$valor]['nome_subpesq']. "<br />";
+
+						// echo "sua pesquisa é nível:" .$valor. "<br />";
+					endif;
+				endif;
+			endforeach;
+		}
+
 		public function checarArmazem($aid)
 		{
 			global $construcoes;
