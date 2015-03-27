@@ -19,6 +19,7 @@ O exemplo não é atualizado a cada commit, então, esse exemplo pode ser uma ve
 
 Next commits
 -------------
+- Aldeias produzindo materias primas diferentes, exemplo, você pode produzir mais pedras e bem menos madeira, assim você poderá vender por moedas no mercado o recurso que você tiver mais abundante.
 - Fazenda: Criação de porco, gado e ovelha.
 - Água: necessário um sistema de produção de água por hora, através de um edifício poço, a população, também irá consumir água, e ela também será usada pra apagar incêndios.
 - Data de pesquisa: Torre de pesquisa, uma árvore de habilidades em uma construção;
