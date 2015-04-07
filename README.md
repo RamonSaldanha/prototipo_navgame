@@ -39,9 +39,9 @@ Game Art
 - Construções:
 - Quartel;
 - Prefeitura;
-- <strike>Moinho (onde desenvolve-se todas as ferramentas de colheita)</strike>;
-- <strike>Conjunto Habitacional (Dormitório Coletivo)</strike>;
-- <strike>Mineiro (catador de pedra)</strike>;
+- <strike>Moinho (onde desenvolve-se todas as ferramentas de colheita)</strike>; http://i.imgur.com/jlYU8l9.png
+- <strike>Conjunto Habitacional (Dormitório Coletivo)</strike>; http://i.imgur.com/APpbQrI.png
+- <strike>Mineiro (catador de pedra)</strike>; http://i.imgur.com/FmQNWoU.png
 - Lenhador (catador de madeira);
 - <strike>Plantação</strike> (<strike>Milho</strike>, Trigo, Cenoura, Abobora);
-- <strike>Criadouro de Animais</strike> (Vaca, Porco, Galinha);
+- <strike>Criadouro de Animais</strike> (Vaca, Porco, Galinha); http://i.imgur.com/WyjgMk8.png
