@@ -19,6 +19,7 @@ O exemplo não é atualizado a cada commit, então, esse exemplo pode ser uma ve
 
 Next commits
 -------------
+- Construção Refeitorio: Separa todas os ingredientes para a comida, assim você vai criar comida por exemplo: peixe, verduras(abobora,cenoura,trigo), carne de vaca, leite de vaca, carne de porco, você irá substituir isso por comida pra população.
 - Aldeias produzindo materias primas diferentes, exemplo, você pode produzir mais pedras e bem menos madeira, assim você poderá vender por moedas no mercado o recurso que você tiver mais abundante.
 - Fazenda: Criação de porco, gado e ovelha.
 - Água: necessário um sistema de produção de água por hora, através de um edifício poço, a população, também irá consumir água, e ela também será usada pra apagar incêndios.
@@ -32,3 +33,15 @@ Next commits
 - <strike>Calcular perda que você terá se demorar a receber a fazer a colheita;</strike>
 - <strike>Ao terminar o processo de colheita, você irá receber os recursos que plantou.</strike>
 - <strike>Recolher recursos de Pedra no processo de construção.</strike>
+
+Game Art
+-------------
+- Construções:
+- Quartel;
+- Prefeitura;
+- <strike>Moinho (onde desenvolve-se todas as ferramentas de colheita)</strike>;
+- <strike>Conjunto Habitacional (Dormitório Coletivo)</strike>;
+- <strike>Mineiro (catador de pedra)</strike>;
+- Lenhador (catador de madeira);
+- <strike>Plantação</strike> (<strike>Milho</strike>, Trigo, Cenoura, Abobora);
+- <strike>Criadouro de Animais</strike> (Vaca, Porco, Galinha);
