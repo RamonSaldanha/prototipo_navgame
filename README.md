@@ -4,6 +4,11 @@
 Esse protótipo é uma ferramenta pra posteriores criações mais complexas.
 O desenvolvimento não envolve nenhum capital e nenhum investimento corporativo.
 
+Facebook Interação
+-------------
+
+https://graph.facebook.com/<b>redbull</b>/picture?width=140&height=110
+
 Install
 -------------
 
