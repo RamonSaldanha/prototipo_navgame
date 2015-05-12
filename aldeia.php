@@ -2,19 +2,6 @@
 <html>
 <head>
 <title>Aldeia</title>
-<style>
-/* Styles not relevant to scrolling (just to make the demo look neat and tidy) */
-body { font-family: sans-serif; -webkit-text-size-adjust: 100%  padding:0; margin:0;}
-#scrollable { height: 100%; width:100%;  }
-p { color: gray }
-.description { color: black }
-
-/* Since the entire page is the scroll container, set body and html to 100% height to disable browser native scrolling.  Remove default padding or margin to avoid native scrollbars. */
-#tabs { padding:0; margin:0;}
-#tabs ul li { display: inline; padding:0; margin:0; }
-#tabs ul {margin-left:-28px;}
-body, html { height: 100%; overflow: hidden; padding: 0; margin: 0; }
-</style>
 
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -43,27 +30,53 @@ $( "#tabs" ).tabs();
 		getContent();
 	});
 </script>
-
+<link rel="stylesheet" href="modelo_grafico/css/aldeia.css">
 </head>
 <body>
+<?php
+require("engine/autoload.php");
+$pdo_mysql = new pdo_mysql();
+$sessao = new sessao();
+$construcoes = new construcoes();
+$automatico = new automatico();
+$aldeia = new aldeia();
+
+// FUNÇÕES QUE PRECISAM SER EXECUTADOS SEMPRE QUE VOCÊ ATUALIZAR A PÁGINA
+$automatico->terminarConstrucao($_SESSION["aid"]);
+$automatico->terminarPesquisas($_SESSION["uid"]);
+?>
 <div id="tabs">
 <ul>
 <li><a href="#tabs-1">Recursos |</a></li>
-<li><a href="#tabs-2">outra coisa |</a></li>
-<li><a href="#tabs-3">outra coisa 2</a></li>
+<li><a href="#tabs-2">Links |</a></li>
+<li><a href="#tabs-3">Aldeias</a></li>
 </ul>
 <div id="tabs-1">
 	<div id="recursos"></div>
 </div>
 <div id="tabs-2">
-outra coisa
+<?php include("modelos/menu.tpl"); ?>
 </div>
 <div id="tabs-3">
-outra coisa 2
+<?php include("modelos/multialdeias.tpl"); ?>
 </div>
 </div>
 
 <div id='scrollable'>
+		<?php
+	// CONSTRUÇÕES DA ALDEIA
+	for($t=1;$t <= 9;$t++)
+	{
+		$terreno = "t" . $t;
+		foreach ($pdo_mysql->select_pdo("edificios","`aid` = {$_SESSION['aid']}") as $edificios):
+			if($edificios->$terreno != ""):
+				echo "<a title='' href='edificio.php?ed={$edificios->$terreno}' ><img id='{$terreno}' class='borda_construcao' title='{$terreno}' src='modelo_grafico/img/e{$edificios->$terreno}.png' style='float: left;margin: 0;padding:0;'  ></a>";
+			else:
+				echo "<a title='' href='construir.php?t={$t}' ><img id='{$terreno}' class='borda_construcao' title='$terreno' src='modelo_grafico/img/e{$edificios->$terreno}.png'></a>";
+			endif;
+		endforeach;
+	}
+	?>
 <img src="modelo_grafico/img/bg.png" />
 </div>
 

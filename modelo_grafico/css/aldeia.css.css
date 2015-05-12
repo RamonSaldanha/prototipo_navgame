@@ -1,0 +1,10 @@
+body { font-family: sans-serif; -webkit-text-size-adjust: 100%  padding:0; margin:0;}
+#scrollable { height: 100%; width:100%;  }
+p { color: gray }
+.description { color: black }
+
+/* Since the entire page is the scroll container, set body and html to 100% height to disable browser native scrolling.  Remove default padding or margin to avoid native scrollbars. */
+#tabs { padding:0; margin:0;}
+#tabs ul li { display: inline; padding:0; margin:0; }
+#tabs ul {margin-left:-28px;}
+body, html { height: 100%; overflow: hidden; padding: 0; margin: 0; }

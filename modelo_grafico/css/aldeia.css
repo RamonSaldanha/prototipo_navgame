@@ -1,0 +1,26 @@
+body { }
+#scrollable { height: 100%; width:100%;  }
+/* Since the entire page is the scroll container, set body and html to 100% height to disable browser native scrolling.  Remove default padding or margin to avoid native scrollbars. */
+#tabs { padding:0; margin:0;}
+#tabs ul li { display: inline; padding:0; margin:0; }
+#tabs ul {margin-left:-28px;}
+body, html { height: 100%; overflow: hidden; padding: 0; margin: 0; }
+/* primeira fileira */
+#t1 { position: absolute; top:290px; left:280px;z-index:10;}
+#t2 { position: absolute; top:190px; left:480px;z-index:11;}
+#t3 { position: absolute; top:100px; left:660px;z-index:12;}
+/* segunda fileira */
+#t4 { position: absolute; top:480px; left:290px;z-index:20;}
+#t5 { position: absolute; top:380px; left:470px;z-index:21;}
+#t6 { position: absolute; top:290px; left:670px;z-index:22;}
+#t7 { position: absolute; top:200px; left:850px;z-index:23;}
+/* terceira fileira */
+#t8 { position: absolute; top:490px; left:670px;z-index:30;}
+#t9 { position: absolute; top:370px; left:870px;z-index:31;}
+/* bordar hover nas construções */
+#scrollable a:hover{
+	-webkit-filter: drop-shadow(2px 2px 0 #ffcc00)
+	drop-shadow(-2px -2px 0 #ffcc00);
+	filter: drop-shadow(2px 2px 0 #ffcc00) 
+	drop-shadow(-2px -2px 0 #ffcc00);
+}
