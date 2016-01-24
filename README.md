@@ -50,3 +50,5 @@ Game Art
 - Lenhador (catador de madeira);
 - <strike>Plantação</strike> (<strike>Milho</strike>, Trigo, Cenoura, Abobora);
 - <strike>Criadouro de Animais</strike> (Vaca, Porco, Galinha); http://i.imgur.com/WyjgMk8.png
+
+https://app.buddy.works/ramonsaldanhaa/prototipo-navgame
