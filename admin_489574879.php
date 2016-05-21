@@ -30,7 +30,7 @@ $( "#tabs" ).tabs();
 		getContent();
 	});
 </script>
-<link rel="stylesheet" href="modelo_grafico/css/aldeia.css">
+<link rel="stylesheet" href="modelo_grafico/css/admin_painel.css">
 </head>
 <body>
 <?php
@@ -51,19 +51,7 @@ include_once("modelos/tabs.tpl");
 ?>
 </div>
 <?php
-	// CONSTRUÇÕES DA ALDEIA
-	for($t=1;$t <= 9;$t++)
-	{
-		$terreno = "t" . $t;
-		foreach ($pdo_mysql->select_pdo("edificios","`aid` = {$_SESSION['aid']}") as $edificios):
-			if($edificios->$terreno != ""):
-				echo "<a title='' href='edificio.php?ed={$edificios->$terreno}' ><img id='{$terreno}' class='borda_construcao' title='{$terreno}' src='modelo_grafico/img/e{$edificios->$terreno}.png' style='float: left;margin: 0;padding:0;'  ></a>";
-			else:
-				echo "<a title='' href='construir.php?t={$t}' ><img id='{$terreno}' class='borda_construcao' title='$terreno' src='modelo_grafico/img/e{$edificios->$terreno}.png'></a>";
-			endif;
-		endforeach;
-	}
+include("modelos/administrador/administrador.php");
 ?>
-
 </body>
 </html>

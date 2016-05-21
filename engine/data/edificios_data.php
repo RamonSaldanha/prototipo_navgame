@@ -22,7 +22,7 @@ $edificios_data = array(
 		"custo_agua" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "40",
-		"atributo" => "3250"
+		"atributo" => "70000"
 	),
 	array(
 		"id" => "2",
@@ -34,7 +34,7 @@ $edificios_data = array(
 		"custo_agua" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "15",
-		"atributo" => "55"
+		"atributo" => "9000"
 	),
 	array(
 		"id" => "3",
@@ -59,7 +59,7 @@ $edificios_data = array(
 		"custo_mao_de_obra" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "40",
-		"atributo" => "55"
+		"atributo" => "9000"
 	),
 	array(
 		"id" => "5",
