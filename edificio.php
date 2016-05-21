@@ -23,9 +23,12 @@
 				getContent();
 			});
 		</script>
-
+		<?php include_once("modelos/head_jquery.tpl");?>
+		<link rel="stylesheet" href="modelo_grafico/css/aldeia.css">
 	</head>
 	<body>
+
+
 		<?php
 		require("engine/autoload.php");
 		$pdo_mysql = new pdo_mysql();
@@ -34,11 +37,12 @@
 		$automatico = new automatico();
 		$aldeia = new aldeia();
 
-		// FUNÇÕES QUE PRECISAM SER EXECUTADOS SEMPRE QUE VOCÊ ATUALIZAR A PÁGINA
-		$aldeia->recursosAtt($_SESSION["aid"]);
-		include("modelos/menu.tpl");
 		?>
-		<div id="recursos"></div>
+		<div id="tabs">
+		<?php
+		include_once("modelos/tabs.tpl");
+		?>
+		</div>
 		<div>
 			<?php
 			echo "<img src=\"modelo_grafico/img/e_p{$_GET['ed']}.png\" height=\"150\" width=\"150\" align=\"left\" />";

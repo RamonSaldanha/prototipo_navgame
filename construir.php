@@ -1,13 +1,20 @@
+<?php include_once("modelos/head_jquery.tpl");?>
+<link rel="stylesheet" href="modelo_grafico/css/aldeia.css">
+
+
 <?php
 require("engine/autoload.php");
 $sessao = new sessao();
 $pdo_mysql = new pdo_mysql();
 $construcoes = new construcoes();
 $aldeia = new aldeia();
-
-include("modelos/menu.tpl");
-include("modelos/menu_recursos.tpl");
-
+?>
+<div id="tabs">
+<?php
+include_once("modelos/tabs.tpl");
+?>
+</div>
+<?php
 if(isset($_GET['e']) && $_GET['e'] >= '0'):
 	$construcoes->construir($_GET['t'],$_GET['e'],$_SESSION['aid']);
 endif;

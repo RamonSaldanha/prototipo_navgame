@@ -40,7 +40,6 @@ $sessao = new sessao();
 $construcoes = new construcoes();
 $automatico = new automatico();
 $aldeia = new aldeia();
-
 // FUNÇÕES QUE PRECISAM SER EXECUTADOS SEMPRE QUE VOCÊ ATUALIZAR A PÁGINA
 $automatico->terminarConstrucao($_SESSION["aid"]);
 $automatico->terminarPesquisas($_SESSION["uid"]);

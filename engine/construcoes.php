@@ -15,6 +15,17 @@
 			endforeach;
 		}
 
+		public function longPollingTempoConstrucao(){
+			global $pdo_mysql;
+			$resultado_final = "";
+			foreach($pdo_mysql->select_pdo("ed_construcao","`aid` = {$_SESSION['aid']}") as $edificios_construcao):
+				$edificio_prop = $this->checarPropEdificio("{$edificios_construcao->edificio_tipo}");
+				$tempo_restante = ($edificio_prop["tempo_construcao"]) - time();
+				$resultado_final.= "<br /> <b>edificio em construção:</b> ". $edificio_prop["edificio_nome"]. " ficará pronto às " . $this->checarTempoRestante($edificios_construcao->tempo_construcao-time()) . "<br />";
+			endforeach;
+			return $resultado_final;
+		}
+
 		public function checarSeExisteEd($aldeia,$edificio,$terreno=null)
 		{
 			global $pdo_mysql;
