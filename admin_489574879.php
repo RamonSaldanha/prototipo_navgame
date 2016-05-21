@@ -30,6 +30,7 @@ $( "#tabs" ).tabs();
 		getContent();
 	});
 </script>
+<link rel="stylesheet" href="modelo_grafico/css/aldeia.css">
 <link rel="stylesheet" href="modelo_grafico/css/admin_painel.css">
 </head>
 <body>

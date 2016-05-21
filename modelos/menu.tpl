@@ -1,1 +1,7 @@
-<div style="height: 25px;"><a href="mapa.php">mapa</a> | <a href="aldeia.php">aldeia</a> | <a href="sair.php">sair</a></div>
+<div style="height: 25px;">
+<uL>
+<li><a href="mapa.php">Mapa</a> | </li>
+<li><a href="aldeia.php">Aldeia</a> | </li> 
+<li><a href="sair.php">Sair</a></li>
+</uL>
+</div>
