@@ -19,6 +19,12 @@ login: Ramon
 senha: 123456
 http://lojaviele.com.br/prototipo_navgame/entrar.php
 
+Nova ordem (Principios fundamentais na mecanica)
+---------------------------
+- 3 construções fundamentais: Mina, Cabana(madeireiro) e Fazenda.
+- 3 Recursos fundamentais: Comida,Pedra e Madeira
+- Mina: produzirá ferro,pedra e ouro. Cabana: Produzirá madeira e Fazenda: Produzira comida em geral, pode se ver a possibilidade de criação de animais também.
+
 Next commits
 -------------
 - Transformação de matéria prima. exemplo: você produz trigo e transforma em pão, assim a população ira pagar mais tributos a prefeitura. na construção responsável por essa 
