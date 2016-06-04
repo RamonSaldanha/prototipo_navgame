@@ -24,7 +24,7 @@ Nova ordem (Principios fundamentais na mecanica)
 - 3 construções fundamentais: Mina, Cabana(madeireiro) e Fazenda.
 - 3 Recursos fundamentais: Comida,Pedra e Madeira
 - Mina: produzirá ferro,pedra e ouro. Cabana: Produzirá madeira e Fazenda: Produzira comida em geral, pode se ver a possibilidade de criação de animais também.
-- população chegará de acordo com o tempo e só as que estiverem trabalhando contribuirão com aliquota de impostos. cada construção vai comportar uma quantidade de população, quando esse limite total for atingido os civis que estiverem sem trabalho, não contribuirão com impostos mas consumirão comida.
+- população chegará de acordo com o tempo e só as que estiverem trabalhando contribuirão com aliquota de impostos. cada construção vai comportar uma quantidade de população, quando esse limite total for atingido os civis que estiverem sem trabalho, não contribuirão com impostos mas consumirão comida, entretanto você poderá recruta-los como soldados, desta forma ele não pagará impostos mas contribura com a segurança da aldeia.
 - Construção Albergue: será onde os cidadãos vão dormir, é também onde definimos qual alimentação da população
 
 Next commits
