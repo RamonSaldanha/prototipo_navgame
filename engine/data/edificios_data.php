@@ -10,7 +10,8 @@ $edificios_data = array(
 		"custo_agua" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "90",
-		"atributo" => "12"
+		"atributo" => "12",
+		"limite_habitantes" => "3"
 	),
 	array(
 		"id" => "1",
@@ -22,7 +23,8 @@ $edificios_data = array(
 		"custo_agua" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "40",
-		"atributo" => "70000"
+		"atributo" => "70000",
+		"limite_habitantes" => "4"
 	),
 	array(
 		"id" => "2",
@@ -34,7 +36,8 @@ $edificios_data = array(
 		"custo_agua" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "15",
-		"atributo" => "9000"
+		"atributo" => "9000",
+		"limite_habitantes" => "5"
 	),
 	array(
 		"id" => "3",
@@ -46,7 +49,8 @@ $edificios_data = array(
 		"custo_agua" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "25",
-		"atributo" => ""
+		"atributo" => "",
+		"limite_habitantes" => "6"
 	),
 	array(
 		"id" => "4",
@@ -59,7 +63,8 @@ $edificios_data = array(
 		"custo_mao_de_obra" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "40",
-		"atributo" => "9000"
+		"atributo" => "9000",
+		"limite_habitantes" => "7"
 	),
 	array(
 		"id" => "5",
@@ -71,7 +76,8 @@ $edificios_data = array(
 		"custo_agua" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "240",
-		"atributo" => ""
+		"atributo" => "",
+		"limite_habitantes" => "8"
 	),
 	array(
 		"id" => "6",
@@ -83,7 +89,8 @@ $edificios_data = array(
 		"custo_agua" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "240",
-		"atributo" => ""
+		"atributo" => "",
+		"limite_habitantes" => "9"
 	),
 	array(
 		"id" => "7",
@@ -95,7 +102,8 @@ $edificios_data = array(
 		"custo_agua" => "",
 		"custo_mao_de_obra" => "",
 		"tempo_construcao" => "20",
-		"atributo" => ""
+		"atributo" => "",
+		"limite_habitantes" => "10"
 	)
 );
 

@@ -26,6 +26,53 @@
 			return $resultado_final;
 		}
 
+		public function verificarQuantConstrucoes() {
+			global $pdo_mysql;
+			global $construcoes;
+			$consulta_mysql = $pdo_mysql->select_pdo("edificios","`aid` = {$_SESSION['aid']}");
+		    $quant_ed = array();
+			foreach($consulta_mysql as $edificios):
+				foreach ($edificios as $ed_tabela => $ed_id):
+				  if($ed_tabela != "aid" && $ed_tabela != "id"):
+				    // echo $ed_tabela . " " . $ed_id . "<br />";
+				    if($ed_id != ""):
+				      $limite_habitantes = $construcoes->checarPropEdificio($ed_id)['limite_habitantes'];
+				    else:
+				      $limite_habitantes = 0;
+				    endif;
+				      $quant_ed[] = array (  
+				          'tabela' => $ed_tabela,  
+				          'edificio' => $ed_id,
+				          'limite_habitantes' => $limite_habitantes
+				      );
+				  endif;
+				endforeach;
+			endforeach;
+			$i = 0;
+			foreach ($quant_ed as $edificios_prop):
+				// aqui imprime todas as propriedades das construções
+				// echo $edificios_prop["tabela"] . " => " . $edificios_prop["edificio"] . " / " . $edificios_prop["limite_habitantes"] . "<br />"; 
+				$i += $edificios_prop["limite_habitantes"];
+			endforeach;
+
+			return $i;
+			// para verificar echo $construcoes->verificarQuantConstrucoes();
+		}
+
+		public function distribuirPopulacao (){
+			$div = floor($numero / $caixas);
+		    $sobra = $numero - ($caixas * $div);
+
+		    for ($i = 1; $i <= $caixas; $i++) {
+		        $caixa[$i] = $div;
+		        if($sobra > 0){
+		            $caixa[$i]++;
+		        }
+		        $sobra--;
+		    }
+
+		    return $caixa;	
+		}
 		public function checarSeExisteEd($aldeia,$edificio,$terreno=null)
 		{
 			global $pdo_mysql;

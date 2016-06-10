@@ -1,10 +1,12 @@
 <?php
 $checar_ed = $construcoes->checarPropEdificio($_GET['ed']);
 echo "<b>{$checar_ed['edificio_nome']}</b><br />";
+echo "<h1>0/". $checar_ed['limite_habitantes'] . "</h1>";
 include("melhorar_tecnica.tpl");
 ?>
 
 <?php
+
 $aldeia_checar = $pdo_mysql->select_pdo_where("aldeia","`id` = {$_SESSION['aid']}");
 $tempo = $aldeia_checar['temp_pop_ociosa'] - time();
 
